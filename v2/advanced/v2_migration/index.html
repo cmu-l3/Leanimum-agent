@@ -129,9 +129,7 @@
               </button>
             
             
-<a href="../../usage/programbench/">
-  🎉 Run mini-swe-agent on our new &amp; extremely challenging benchmark, ProgramBench
-</a>
+<a href="../../usage/reuf2f/">Leanimum-agent: bash-only Lean workflows and ReuF2F</a>
 
           </div>
           
@@ -326,44 +324,6 @@
   
 
       
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="https://www.swebench.com/blog.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Blog
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="https://swebench.com" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Leaderboard
-
-      </a>
-    </li>
-  
-
-      
     </ul>
   </div>
 </nav>
@@ -545,8 +505,6 @@
       
         
       
-        
-      
     
     
     
@@ -653,42 +611,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../usage/swebench/" class="md-nav__link">
+      <a href="../../usage/reuf2f/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    SWE-bench
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../usage/programbench/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ProgramBench
+    ReuF2F
   
 
     
@@ -2318,10 +2248,6 @@
       
         
       
-        
-      
-        
-      
     
     
     
@@ -2512,70 +2438,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/run/swebench/" class="md-nav__link">
+      <a href="../../reference/run/reuf2f/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    SWE-bench (batch)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../reference/run/swebench_single/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SWE-bench (single)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../reference/run/programbench/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ProgramBench
+    ReuF2F
   
 
     
@@ -2600,60 +2470,6 @@
           </ul>
         </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="https://www.swebench.com/blog.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Blog
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="https://swebench.com" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Leaderboard
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -2813,7 +2629,6 @@
               
               <article class="md-content__inner md-typeset">
                 
-
                   
 
 
@@ -2826,6 +2641,9 @@
   
 
 
+<blockquote>
+<p>Historical upstream v2 migration reference. Leanimum uses Lean prompts and ReuF2F as its only benchmark.</p>
+</blockquote>
 <h1 id="v20-migration-guide">v2.0 Migration Guide</h1>
 <div class="admonition danger">
 <p class="admonition-title">Breaking Changes</p>
@@ -2887,7 +2705,7 @@ See the <a href="https://mini-swe-agent.com/v1/">v1 documentation</a> or the <a 
 </code></pre></div>
 <p><strong>CLI now supports multiple configs and key-value overrides:</strong></p>
 <div class="highlight"><pre><span></span><code>mini<span class="w"> </span>-c<span class="w"> </span>mini.yaml<span class="w"> </span>-c<span class="w"> </span>model.model_kwargs.temperature<span class="o">=</span><span class="m">0</span>.5
-mini<span class="w"> </span>-c<span class="w"> </span>swebench.yaml<span class="w"> </span>-c<span class="w"> </span>agent.step_limit<span class="o">=</span><span class="m">100</span>
+mini<span class="w"> </span>-c<span class="w"> </span>reuf2f.yaml<span class="w"> </span>-c<span class="w"> </span>agent.step_limit<span class="o">=</span><span class="m">100</span>
 mini<span class="w"> </span>-c<span class="w"> </span>mini.yaml<span class="w"> </span>-c<span class="w"> </span>/path/to/model.yaml
 </code></pre></div>
 <div class="admonition warning">
@@ -2902,14 +2720,13 @@ mini<span class="w"> </span>-c<span class="w"> </span>mini.yaml<span class="w"> 
 <li>Text-based (legacy): Model outputs commands in markdown code blocks (or similar), regex extracts them</li>
 </ul>
 <p><strong>How to use it:</strong></p>
-<p>Tool calling is the default. The CLI uses <code>mini.yaml</code> and <code>swebench.yaml</code> which are configured for tool calling.</p>
+<p>Tool calling is the default. The CLI uses <code>mini.yaml</code> and <code>reuf2f.yaml</code> which are configured for tool calling.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Default (tool calling)</span>
 mini
-python<span class="w"> </span>-m<span class="w"> </span>leanimum.run.benchmarks.swebench
-mini-extra<span class="w"> </span>swebench
+python<span class="w"> </span>-m<span class="w"> </span>leanimum.run.benchmarks.reuf2f
+leani-extra<span class="w"> </span>reuf2f<span class="w"> </span>--repo<span class="w"> </span>/path/to/ReuF2F
 
 <span class="c1"># Text-based parsing</span>
-mini-extra<span class="w"> </span>swebench<span class="w"> </span>-c<span class="w"> </span>swebench_backticks.yaml
 mini<span class="w"> </span>-c<span class="w"> </span>mini_textbased.yaml
 </code></pre></div>
 <p><strong>For custom configs:</strong></p>
@@ -3086,36 +2903,6 @@ Config options like <code>--config-class</code> also take full import classes, s
 
 
                 
-
-
-<div class="floating-bubbles">
-<div class="floating-bubbles-title">Our projects</div>
-  <a href="https://swe-agent.com/" class="bubble" title="SWE-agent">
-    <img src="https://raw.githubusercontent.com/SWE-agent/swe-agent-media/refs/heads/main/media/logos_banners/sweagent_logo.svg" alt="SWE-agent">
-    <span class="bubble-tooltip">SWE-agent</span>
-  </a>
-  <a href="https://swe-rex.com/" class="bubble" title="SWE-rex">
-    <img src="https://raw.githubusercontent.com/SWE-agent/swe-agent-media/refs/heads/main/media/logos_banners/swerex_logo.svg" alt="SWE-rex">
-    <span class="bubble-tooltip">SWE-ReX</span>
-  </a>
-  <a href="https://swesmith.com" class="bubble" title="SWE-smith">
-    <img src="https://raw.githubusercontent.com/SWE-agent/swe-agent-media/refs/heads/main/media/logos_banners/swesmith_logo.png" alt="SWE-smith">
-    <span class="bubble-tooltip">SWE-smith</span>
-  </a>
-  <a href="https://swebench.com" class="bubble" title="SWE-bench">
-    <img src="https://raw.githubusercontent.com/SWE-agent/swe-agent-media/refs/heads/main/media/logos_banners/swebench_logo.png" alt="SWE-bench">
-    <span class="bubble-tooltip">SWE-bench</span>
-  </a>
-  <a href="https://codeclash.ai" class="bubble" title="CodeClash">
-    <img src="https://raw.githubusercontent.com/SWE-agent/swe-agent-media/refs/heads/main/media/logos_banners/codeclash_logo.svg" alt="CodeClash">
-    <span class="bubble-tooltip">CodeClash</span>
-  </a>
-  <a href="https://www.swebench.com/sb-cli/" class="bubble" title="sb-cli">
-    <img src="https://raw.githubusercontent.com/SWE-agent/swe-agent-media/refs/heads/main/media/logos_banners/sbcli_logo.svg" alt="sb-cli">
-    <span class="bubble-tooltip">sb-cli</span>
-  </a>
-</div>
-
               </article>
             </div>
           
@@ -3211,4 +2998,4 @@ Config options like <code>--config-class</code> also take full import classes, s
   
 <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
 document$.subscribe(()=>{ lightbox.reload(); });
-</script></body></html><!-- Floating Bubbles -->
+</script></body></html>
