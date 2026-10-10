@@ -2606,11 +2606,11 @@ target for the full negation. The task prompt names both.</p>
 <tbody>
 <tr>
 <td><code>agent.step_limit</code></td>
-<td><code>250</code></td>
+<td><code>1000</code></td>
 </tr>
 <tr>
 <td><code>agent.cost_limit</code></td>
-<td><code>$3</code></td>
+<td><code>0</code> (no per-attempt cost limit)</td>
 </tr>
 <tr>
 <td><code>environment.timeout</code></td>
@@ -2618,16 +2618,32 @@ target for the full negation. The task prompt names both.</p>
 </tr>
 <tr>
 <td><code>agent.wall_time_limit_seconds</code></td>
-<td><code>0</code> (no limit)</td>
+<td><code>21600</code> (6 hours)</td>
 </tr>
 <tr>
 <td><code>environment.container_timeout</code></td>
-<td><code>2h</code> (Docker only)</td>
+<td><code>7h</code> (Docker only)</td>
 </tr>
 </tbody>
 </table>
-<p>These controls are independent. Removing the agent's wall-clock limit does not
-remove the Docker container lifetime.</p>
+<p>These budgets apply independently to each attempt. Token usage and costs are
+still recorded when the per-attempt cost limit is disabled; account credit limits
+and any separately configured global limits still apply.</p>
+<p>Tool observations warn the agent when fewer than 20 model calls or 10 minutes
+remain. The agent must still create, inspect, and submit its patch explicitly;
+the runner does not collect unsubmitted work when a limit is reached.</p>
+<p>The agent checks its time budget before model queries. This does not interrupt
+an in-flight model request or shell command. The separate 7-hour Docker lifetime
+leaves room for task preparation and cleanup; it is not extra agent solving time.</p>
+<p>The benchmark config does not set <code>model.model_kwargs.max_tokens</code>,
+<code>max_completion_tokens</code>, or a reasoning effort. Without a model-specific override,
+the request leaves the output-token limit unspecified; the adapter/provider
+handles defaults and model limits. There is no fixed 16k or 32k benchmark default.</p>
+<p>The benchmark explicitly sets <code>model.model_kwargs.drop_params: true</code> and
+<code>model.model_kwargs.parallel_tool_calls: true</code>. For the LiteLLM adapter, these
+allow unsupported parameters to be dropped and request multiple tool calls
+in one response when the provider supports them. They do not make shell
+commands execute concurrently; use model-specific overrides when needed.</p>
 <h2 id="predictions-and-evaluation">Predictions and evaluation</h2>
 <p>The runner saves the agent's submitted diff in <code>preds.json</code>, plus trajectories
 and logs. It does not collect unsubmitted edits or files omitted from the diff.
@@ -2781,12 +2797,14 @@ runs before task preparation. A nonzero exit fails setup.</p>
 <span class="w">    </span><span class="no">- You CANNOT continue working (reading, editing, testing) in any way on this task after submitting.</span>
 <span class="w">    </span><span class="no">&lt;/CRITICAL&gt;</span>
 <span class="w">    </span><span class="no">&lt;/instructions&gt;</span>
-<span class="w">  </span><span class="nt">step_limit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">250</span>
-<span class="w">  </span><span class="nt">cost_limit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.</span>
+<span class="w">  </span><span class="nt">step_limit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">  </span><span class="nt">cost_limit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">  </span><span class="nt">wall_time_limit_seconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">21600</span>
 
 <span class="nt">environment</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">cwd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/testbed</span>
 <span class="w">  </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1200</span>
+<span class="w">  </span><span class="nt">container_timeout</span><span class="p">:</span><span class="w"> </span><span class="s">"7h"</span>
 <span class="w">  </span><span class="nt">interpreter</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"bash"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-c"</span><span class="p p-Indicator">]</span>
 <span class="w">  </span><span class="nt">env</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">PAGER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat</span>
@@ -2825,6 +2843,22 @@ runs before task preparation. A nonzero exit fails setup.</p>
 <span class="w">    </span><span class="no">{{ output.output[-5000:] }}</span>
 <span class="w">    </span><span class="no">&lt;/output_tail&gt;</span>
 <span class="w">    </span><span class="no">{%- endif -%}</span>
+<span class="w">    </span><span class="no">{% if step_limit &gt; 0 and step_limit - n_model_calls &lt; 20 -%}</span>
+
+<span class="w">    </span><span class="no">&lt;IMPORTANT&gt;</span>
+<span class="w">    </span><span class="no">You have {{ [0, step_limit - n_model_calls] | max }} model calls remaining before the step limit.</span>
+<span class="w">    </span><span class="no">Stop starting new lines of investigation and wrap up now. Preserve your best proof attempt, check it if time permits, and submit your Git patch using the separate create, inspect, and submit commands in the initial instructions.</span>
+<span class="w">    </span><span class="no">Unsubmitted changes are not collected automatically.</span>
+<span class="w">    </span><span class="no">&lt;/IMPORTANT&gt;</span>
+<span class="w">    </span><span class="no">{%- endif %}</span>
+<span class="w">    </span><span class="no">{% if wall_time_limit_seconds &gt; 0 and wall_time_limit_seconds - elapsed_seconds &lt; 600 -%}</span>
+
+<span class="w">    </span><span class="no">&lt;IMPORTANT&gt;</span>
+<span class="w">    </span><span class="no">You have approximately {{ [0, (wall_time_limit_seconds - elapsed_seconds) // 60] | max }} minutes remaining before the time limit.</span>
+<span class="w">    </span><span class="no">Wrap up now. Avoid starting long-running commands and reserve enough time to create, inspect, and submit your Git patch as separate commands following the initial instructions.</span>
+<span class="w">    </span><span class="no">Unsubmitted changes are not collected automatically.</span>
+<span class="w">    </span><span class="no">&lt;/IMPORTANT&gt;</span>
+<span class="w">    </span><span class="no">{%- endif %}</span>
 <span class="w">  </span><span class="nt">format_error_template</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">{% if finish_reason is defined and (finish_reason == "length" or (finish_reason == "tool_calls" and not has_tool_calls)) -%}</span>
 <span class="w">    </span><span class="no">Your previous response reached the output token limit (finish_reason={{ finish_reason }}) before you produced a tool call, so it was cut off. Respond more concisely and finish with exactly one bash tool call. If you need to think more, do so briefly.</span>
