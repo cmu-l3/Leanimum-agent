@@ -1,8 +1,8 @@
 # Configs
 
-* `mini.yaml` - Default config for `mini`/`agents/interactive.py` agent.
+* `mini.yaml` - Default config for `leani`/`agents/interactive.py` agent.
 * `default.yaml` - Default config for the `default.py` agent.
 
 ## Benchmarks
 
-* `benchmarks/swebench.yaml` - Config for the `run/benchmarks/swebench.py` entry point.
+* `benchmarks/reuf2f.yaml` - Config for the `run/benchmarks/reuf2f.py` entry point.

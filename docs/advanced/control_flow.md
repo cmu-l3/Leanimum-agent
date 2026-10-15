@@ -7,9 +7,9 @@
 !!! abstract "Understanding the default agent"
 
     * This guide shows the control flow of the default agent.
-    * After this, you're ready to [remix & extend mini](cookbook.md)
+    * After this, you're ready to [remix & extend leani](cookbook.md)
 
-The following diagram shows the control flow of the mini agent:
+The following diagram shows the control flow of the leani agent:
 
 ```mermaid
 flowchart TD
@@ -49,11 +49,11 @@ And here is the code that implements it:
 
 ??? note "Default agent class"
 
-    - [Read on GitHub](https://github.com/swe-agent/mini-swe-agent/blob/main/src/minisweagent/agents/default.py)
+    - [Read on GitHub](https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/agents/default.py)
     - [API reference](../reference/agents/default.md)
 
     ```python
-    --8<-- "src/minisweagent/agents/default.py"
+    --8<-- "src/leanimum/agents/default.py"
     ```
 
 Essentially, `DefaultAgent.run` calls `DefaultAgent.step` in a loop until the agent has finished its task.
@@ -86,8 +86,8 @@ And `execute_actions`:
 
 ```python
 def execute_actions(self, message: dict) -> list[dict]:
-    outputs = [self.env.execute(action) for action in message.get...
-    return self.add_messages(*self.model.format_observation_messages(...))
+    outputs = [self.env.execute(action) for action in message.get("extra", {}).get("actions", [])]
+    return self.add_messages(*self.model.format_observation_messages(message, outputs, self.get_template_vars()))
 ```
 
 The interesting bit is how we handle error conditions and the finish condition:
@@ -122,4 +122,4 @@ while True:
 
 Using exceptions for the control flow is a lot easier than passing around flags and states, especially when extending or subclassing the agent.
 
-{% include-markdown "_footer.md" %}
+{% include-markdown "../_footer.md" %}

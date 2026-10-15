@@ -7,9 +7,9 @@
 
 We support various environments for executing code through different backends.
 
-If you run the [`mini`](../usage/mini.md) CLI, you will run in the `local` environment by default.
+If you run the [`leani`](../usage/mini.md) CLI, you will run in the `local` environment by default.
 
-However, particularly for evaluating on SWE-bench, you want to run in isolated environments, so we offer multiple "backends" that you can use.
+However, particularly for evaluating on ReuF2F, you want to run in isolated environments, so we offer multiple "backends" that you can use.
 
 You can specify the environment class with the `--environment-class` flag or the
 `environment.environment_class` key in the [agent config file](yaml_configuration.md).
@@ -29,4 +29,3 @@ On top, there are a few more specialized environment classes that you can use:
 * **`bubblewrap`** ([`BubblewrapEnvironment`](../reference/environments/bubblewrap.md)) - **Linux only**. Uses [bubblewrap](https://github.com/containers/bubblewrap) for lightweight, unprivileged sandboxing. Experimental.
 
 * **`contree`** ([`ContreeEnvironment`](../reference/environments/contree.md)) - Uses [ConTree](https://contree.dev/) for safe code execution sandboxing. Platform that built for agents and supports Git-like execution.
-

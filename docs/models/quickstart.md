@@ -2,8 +2,8 @@
 
 !!! tip "Setup"
 
-    * In most cases, you can simply run `mini-extra config setup` to set up your default model and API keys.
-      This should be run the first time you run `mini`.
+    * In most cases, you can simply run `leani-extra config setup` to set up your default model and API keys.
+      This should be run the first time you run `leani`.
     * By default we support all models using [`litellm`](https://github.com/BerriAI/litellm).
     * We also offer support for models via [Openrouter](https://openrouter.ai/) and [Portkey](https://portkey.ai/).
 
@@ -11,8 +11,8 @@
 
 There are several ways to set your API keys:
 
-* **Recommended**: Run our setup script: `mini-extra config setup`. This should also run automatically the first time you run `mini`.
-* Use `mini-extra config set ANTHROPIC_API_KEY <your-api-key>` to put the key in the `mini` [config file](../advanced/global_configuration.md).
+* **Recommended**: Run our setup script: `leani-extra config setup`. This should also run automatically the first time you run `leani`.
+* Use `leani-extra config set ANTHROPIC_API_KEY <your-api-key>` to put the key in the `leani` [config file](../advanced/global_configuration.md).
 * Export your key as an environment variable: `export ANTHROPIC_API_KEY=<your-api-key>` (this is not persistent if you restart your shell, unless you add it to your shell config, like `~/.bashrc` or `~/.zshrc`).
 * If you run several agents in parallel, see our note about rotating anthropic keys [here](../advanced/global_configuration.md).
 
@@ -82,9 +82,9 @@ There are several ways to set your API keys:
     You can find a list of their supported models [here](https://docs.litellm.ai/docs/providers).
     Please always include the provider in the model name, e.g., `anthropic/claude-...`.
 
-* **Recommended**: `mini-extra config setup` (should be run the first time you run `mini`) can set the default model for you
+* **Recommended**: `leani-extra config setup` (should be run the first time you run `leani`) can set the default model for you
 * All command line interfaces allow you to set the model name with `-m` or `--model`.
-* In addition, you can set the default model with `mini-extra config set MSWEA_MODEL_NAME <model-name>`, by editing the global [config file](../advanced/global_configuration.md) (shortcut: `mini-extra config edit`), or by setting the `MSWEA_MODEL_NAME` environment variable.
+* In addition, you can set the default model with `leani-extra config set LEANA_MODEL_NAME <model-name>`, by editing the global [config file](../advanced/global_configuration.md) (shortcut: `leani-extra config edit`), or by setting the `LEANA_MODEL_NAME` environment variable.
 * You can also set your model in a config file (key `model_name` under `model`).
 * If you want to use local models, please check this [guide](local_models.md).
 
@@ -114,7 +114,7 @@ To find the corresponding API key, check the previous section.
 ## Extra model settings
 
 To configure reasoning efforts or similar settings, you need to edit the [agent config file](../advanced/yaml_configuration.md).
-In newer versions, the location of the config file is printed when you run `mini` ("agent config" in the output).
+In newer versions, the location of the config file is printed when you run `leani` ("agent config" in the output).
 
 Here's a few general examples:
 
@@ -267,7 +267,7 @@ For example:
 === "Openrouter model"
 
     ```bash
-    mini -m "moonshotai/kimi-k2-0905" --model-class openrouter
+    leani -m "moonshotai/kimi-k2-0905" --model-class openrouter
     ```
 
     **Alternatively:** In the agent config file:
@@ -281,7 +281,7 @@ For example:
 === "Portkey model"
 
     ```bash
-    mini -m "claude-sonnet-4-5-20250929" --model-class portkey
+    leani -m "claude-sonnet-4-5-20250929" --model-class portkey
     ```
 
     **Alternatively:** In the agent config file:
@@ -303,9 +303,8 @@ For example:
 On top, there's a few more exotic model classes that you can use:
 
 * **`deterministic`** ([`DeterministicModel`](../reference/models/test_models.md)) - Returns predefined responses for testing and development purposes.
-* **`minisweagent.models.extra.roulette.RouletteModel` and `minisweagent.models.extra.roulette.InterleavingModel`** ([`RouletteModel`](../reference/models/extra.md) and [`InterleavingModel`](../reference/models/extra.md)) - Randomly selects or interleaves multiple configured models for each query. See [this blog post](https://www.swebench.com/SWE-bench/blog/2025/08/19/mini-roulette/) for more details.
+* **`leanimum.models.extra.roulette.RouletteModel` and `leanimum.models.extra.roulette.InterleavingModel`** ([`RouletteModel`](../reference/models/extra.md) and [`InterleavingModel`](../reference/models/extra.md)) - Randomly selects or interleaves multiple configured models for each query.
 
-As with the last two, you can also specify any import path to your own custom model class (even if it is not yet part of the mini-SWE-agent package).
+As with the last two, you can also specify any import path to your own custom model class (even if it is not yet part of the Leanimum-agent package).
 
 --8<-- "docs/_footer.md"
-

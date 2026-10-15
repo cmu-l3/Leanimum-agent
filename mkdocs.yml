@@ -1,13 +1,10 @@
-site_name: mini-SWE-agent documentation
-site_url: https://mini-swe-agent.com
+site_name: Leanimum-agent documentation
 theme:
   name: material
   icon:
     repo: fontawesome/brands/github
     annotation: material/chevron-right-circle
   custom_dir: docs/overrides
-  logo: assets/mini_square.svg
-  favicon: assets/mini_square.svg
   palette:
     - media: "(prefers-color-scheme)"
       toggle:
@@ -63,10 +60,9 @@ nav:
     - "Overview": index.md
     - "Quick start": quickstart.md
     - "Command line usage":
-      - "<code>mini</code>": usage/mini.md
+      - "<code>leani</code>": usage/mini.md
       - "Config": usage/config.md
-      - "SWE-bench": usage/swebench.md
-      - "ProgramBench": usage/programbench.md
+      - "ReuF2F": usage/reuf2f.md
       - "Inspector": usage/inspector.md
       - "Output files": usage/output_files.md
     - "Language models":
@@ -81,7 +77,6 @@ nav:
       - "Understanding the agent": advanced/control_flow.md
       - "Subclassing and more": advanced/cookbook.md
       - "Environments": advanced/environments.md
-      - "v2 migration guide": advanced/v2_migration.md
     - "FAQ": faq.md
     - "Contributing": contributing.md
   - API Reference:
@@ -110,15 +105,11 @@ nav:
       - "SwerexModalEnvironment": "reference/environments/swerex_modal.md"
     - Run Scripts:
       - "Hello World": "reference/run/hello_world.md"
-      - "mini": "reference/run/mini.md"
-      - "mini-extra": "reference/run/mini_extra.md"
+      - "leani": "reference/run/mini.md"
+      - "leani-extra": "reference/run/mini_extra.md"
       - "Config": "reference/run/config.md"
       - "Inspector": "reference/run/inspector.md"
-      - "SWE-bench (batch)": "reference/run/swebench.md"
-      - "SWE-bench (single)": "reference/run/swebench_single.md"
-      - "ProgramBench": "reference/run/programbench.md"
-  - Blog: https://www.swebench.com/blog.html
-  - Leaderboard: https://swebench.com
+      - "ReuF2F": "reference/run/reuf2f.md"
 plugins:
   - redirects:
       redirect_maps:
@@ -152,8 +143,8 @@ plugins:
               - "!^_"
               - "!^model_config"
               - "!^model_post_init"
-repo_url: https://github.com/SWE-agent/mini-SWE-agent
-repo_name: SWE-agent/mini-SWE-agent
+repo_url: https://github.com/cmu-l3/Leanimum-agent
+repo_name: cmu-l3/Leanimum-agent
 edit_uri: edit/main/docs/
 extra_javascript:
   - assets/js/sh-annotation.js
@@ -163,7 +154,6 @@ extra_css:
   - assets/gif-controls.css
   - assets/mkdocstrings.css
   - assets/image_theme.css
-  - assets/bubbles.css
   - assets/navigation_cards.css
   - https://fonts.googleapis.com/icon?family=Material+Icons
 extra:

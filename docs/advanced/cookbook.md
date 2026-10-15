@@ -1,8 +1,8 @@
 # Cookbook
 
-!!! abstract "Remixing & extending mini"
+!!! abstract "Remixing & extending leani"
 
-    * This guide shows how to mix the different components of the `mini` agent to create your own custom version.
+    * This guide shows how to mix the different components of the `leani` agent to create your own custom version.
     * You might want to first take a look at the [control flow of the default agent](control_flow.md) first
 
 
@@ -11,21 +11,21 @@
     Make sure to follow the dev setup instructions in [quickstart.md](../quickstart.md).
 
 We provide several different entry points to the agent,
-for example [hello world](https://github.com/SWE-agent/mini-swe-agent/blob/main/src/minisweagent/run/hello_world.py),
-or the [default when calling `mini`](https://github.com/SWE-agent/mini-swe-agent/blob/main/src/minisweagent/run/mini.py).
+for example [hello world](https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/run/hello_world.py),
+or the [default when calling `leani`](https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/run/mini.py).
 
 Want to cook up your custom version and the config is not enough?
 Just follow the recipe below:
 
-1. What's the control flow you need? Pick an [agent class](https://github.com/SWE-agent/mini-swe-agent/blob/main/src/minisweagent/agents) (e.g., [simplest example](https://github.com/SWE-agent/mini-swe-agent/blob/main/src/minisweagent/agents/default.py), [with human in the loop](https://github.com/SWE-agent/mini-swe-agent/blob/main/src/minisweagent/agents/interactive.py))
-2. How should actions be executed? Pick an [environment class](https://github.com/SWE-agent/mini-swe-agent/blob/main/src/minisweagent/environments) (e.g., [local](https://github.com/SWE-agent/mini-swe-agent/blob/main/src/minisweagent/environments/local.py), or [docker](https://github.com/SWE-agent/mini-swe-agent/blob/main/src/minisweagent/environments/docker.py))
-3. How is the LM queried? Pick a [model class](https://github.com/SWE-agent/mini-swe-agent/blob/main/src/minisweagent/models) (e.g., [litellm](https://github.com/SWE-agent/mini-swe-agent/blob/main/src/minisweagent/models/litellm_model.py))
-4. How to invoke the agent? Bind them all together in a [run script](https://github.com/SWE-agent/mini-swe-agent/blob/main/src/minisweagent/run), possibly reading from a [config](https://github.com/SWE-agent/mini-swe-agent/blob/main/src/minisweagent/config) (e.g., [hello world](https://github.com/SWE-agent/mini-swe-agent/blob/main/src/minisweagent/run/hello_world.py), or [`mini` entry point](https://github.com/SWE-agent/mini-swe-agent/blob/main/src/minisweagent/run/mini.py))
+1. What's the control flow you need? Pick an [agent class](https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/agents) (e.g., [simplest example](https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/agents/default.py), [with human in the loop](https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/agents/interactive.py))
+2. How should actions be executed? Pick an [environment class](https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/environments) (e.g., [local](https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/environments/local.py), or [docker](https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/environments/docker.py))
+3. How is the LM queried? Pick a [model class](https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/models) (e.g., [litellm](https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/models/litellm_model.py))
+4. How to invoke the agent? Bind them all together in a [run script](https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/run), possibly reading from a [config](https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/config) (e.g., [hello world](https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/run/hello_world.py), or [`leani` entry point](https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/run/mini.py))
 
 We aim to keep all of these components very simple, but offer lots of choice between them -- enough to cover a broad range of
 things that you might want to do.
 
-You can override the default entry point by setting the `MSWEA_DEFAULT_RUN` environment variable to the import path of your run script.
+Run your custom entry point directly with Python, or select classes through the agent, model and environment configuration.
 
 ## Hello world
 
@@ -33,20 +33,30 @@ See [Python bindings](../usage/python_bindings.md) for the most basic example.
 
 ## Mix & match
 
+The examples below share this configuration, which supplies the prompt templates
+required by the agent and the matching model settings:
+
+```python
+from leanimum.config import get_config_from_spec
+
+config = get_config_from_spec("mini")
+```
+
 ### Models
 
 === "Hello world (use automatic model selection)"
 
     ```python
-    from minisweagent.agents.default import DefaultAgent
-    from minisweagent.models import get_model
-    from minisweagent.environments.local import LocalEnvironment
+    from leanimum.agents.default import DefaultAgent
+    from leanimum.models import get_model
+    from leanimum.environments.local import LocalEnvironment
 
     model_name = "anthropic/claude-sonnet-4-5-20250929"
 
     agent = DefaultAgent(
-        get_model(input_model_name=model_name),
+        get_model(input_model_name=model_name, config=config["model"]),
         LocalEnvironment(),
+        **config["agent"],
     )
     agent.run(task)
     ```
@@ -54,15 +64,16 @@ See [Python bindings](../usage/python_bindings.md) for the most basic example.
 === "Hello world (Litellm)"
 
     ```python
-    from minisweagent.agents.default import DefaultAgent
-    from minisweagent.models.litellm_model import LitellmModel
-    from minisweagent.environments.local import LocalEnvironment
+    from leanimum.agents.default import DefaultAgent
+    from leanimum.models.litellm_model import LitellmModel
+    from leanimum.environments.local import LocalEnvironment
 
     model_name = "gpt-4o"
 
     agent = DefaultAgent(
-        LitellmModel(model_name=model_name),
+        LitellmModel(model_name=model_name, **config["model"]),
         LocalEnvironment(),
+        **config["agent"],
     )
     agent.run(task)
     ```
@@ -72,22 +83,24 @@ See [Python bindings](../usage/python_bindings.md) for the most basic example.
 === "Hello world with local execution"
 
     ```python
-    from minisweagent.environments.local import LocalEnvironment
+    from leanimum.environments.local import LocalEnvironment
 
     agent = DefaultAgent(
-        LitellmModel(model_name=model_name),
+        LitellmModel(model_name=model_name, **config["model"]),
         LocalEnvironment(),
+        **config["agent"],
     )
     ```
 
 === "Hello world with docker execution"
 
     ```python
-    from minisweagent.environments.docker import DockerEnvironment
+    from leanimum.environments.docker import DockerEnvironment
 
     agent = DefaultAgent(
-        LitellmModel(model_name=model_name),
-        DockerEnvironment(),
+        LitellmModel(model_name=model_name, **config["model"]),
+        DockerEnvironment(image="YOUR_IMAGE", cwd="/testbed"),
+        **config["agent"],
     )
     ```
 
@@ -96,26 +109,28 @@ See [Python bindings](../usage/python_bindings.md) for the most basic example.
 === "Default agent"
 
     ```python
-    from minisweagent.agents.default import DefaultAgent
-    from minisweagent.models import get_model
-    from minisweagent.environments.local import LocalEnvironment
+    from leanimum.agents.default import DefaultAgent
+    from leanimum.models import get_model
+    from leanimum.environments.local import LocalEnvironment
 
     agent = DefaultAgent(
-        get_model(input_model_name=model_name),
+        get_model(input_model_name=model_name, config=config["model"]),
         LocalEnvironment(),
+        **config["agent"],
     )
     ```
 
 === "Human in the loop"
 
     ```python
-    from minisweagent.agents.interactive import InteractiveAgent
-    from minisweagent.models import get_model
-    from minisweagent.environments.local import LocalEnvironment
+    from leanimum.agents.interactive import InteractiveAgent
+    from leanimum.models import get_model
+    from leanimum.environments.local import LocalEnvironment
 
     agent = InteractiveAgent(
-        get_model(input_model_name=model_name),
+        get_model(input_model_name=model_name, config=config["model"]),
         LocalEnvironment(),
+        **config["agent"],
     )
     ```
 
@@ -129,12 +144,12 @@ An agent that uses python function for some actions:
 === "Subclassing the agent"
 
     ```python
-    from minisweagent.agents.default import DefaultAgent
+    from leanimum.agents.default import DefaultAgent
     import shlex
 
     def python_function(*args) -> dict:
         ...
-        return {"output": "..."}
+        return {"output": "...", "returncode": 0, "exception_info": ""}
 
     class AgentWithPythonFunctions(DefaultAgent):
         def execute_actions(self, message: dict) -> list[dict]:
@@ -142,7 +157,7 @@ An agent that uses python function for some actions:
                 command = action.get("command", "")
                 if command.startswith("python_function"):
                     args = shlex.split(command.removeprefix("python_function").strip())
-                    return self.add_messages(self.model.format_observation_messages(
+                    return self.add_messages(*self.model.format_observation_messages(
                         message, [python_function(*args)], self.get_template_vars()
                     ))
             # everything else works as usual
@@ -153,13 +168,13 @@ An agent that uses python function for some actions:
 === "Subclassing the environment"
 
     ```python
-    from minisweagent.agents.default import DefaultAgent
-    from minisweagent.environments.local import LocalEnvironment
+    from leanimum.agents.default import DefaultAgent
+    from leanimum.environments.local import LocalEnvironment
     import shlex
 
     def python_function(*args) -> dict:
         ...
-        return {"output": "..."}
+        return {"output": "...", "returncode": 0, "exception_info": ""}
 
     class EnvironmentWithPythonFunctions(LocalEnvironment):
         def execute(self, action: dict, cwd: str = "") -> dict:
@@ -171,8 +186,9 @@ An agent that uses python function for some actions:
             return super().execute(action, cwd)
 
     agent = DefaultAgent(
-        LitellmModel(model_name=model_name),
+        LitellmModel(model_name=model_name, **config["model"]),
         EnvironmentWithPythonFunctions(),
+        **config["agent"],
     )
     ```
 
@@ -181,8 +197,8 @@ An agent that exits when the `submit` command is issued:
 === "Subclassing the agent"
 
     ```python
-    from minisweagent.agents.default import DefaultAgent
-    from minisweagent.exceptions import Submitted
+    from leanimum.agents.default import DefaultAgent
+    from leanimum.exceptions import Submitted
 
     class AgentQuitsOnSubmit(DefaultAgent):
         def execute_actions(self, message: dict) -> list[dict]:
@@ -201,9 +217,9 @@ An agent that exits when the `submit` command is issued:
 === "Subclassing the environment"
 
     ```python
-    from minisweagent.agents.default import DefaultAgent
-    from minisweagent.environments.local import LocalEnvironment
-    from minisweagent.exceptions import Submitted
+    from leanimum.agents.default import DefaultAgent
+    from leanimum.environments.local import LocalEnvironment
+    from leanimum.exceptions import Submitted
 
     class EnvironmentQuitsOnSubmit(LocalEnvironment):
         def execute(self, action: dict, cwd: str = "") -> dict:
@@ -216,8 +232,9 @@ An agent that exits when the `submit` command is issued:
             return super().execute(action, cwd)
 
     agent = DefaultAgent(
-        LitellmModel(model_name=model_name),
+        LitellmModel(model_name=model_name, **config["model"]),
         EnvironmentQuitsOnSubmit(),
+        **config["agent"],
     )
     ```
 
@@ -228,8 +245,8 @@ An agent that validates actions before execution (also an example of how to use 
 
     ```python
     import re
-    from minisweagent.agents.default import DefaultAgent, AgentConfig
-    from minisweagent.exceptions import FormatError
+    from leanimum.agents.default import DefaultAgent, AgentConfig
+    from leanimum.exceptions import FormatError
     from pydantic import BaseModel
 
     class ValidatingAgentConfig(AgentConfig):
@@ -258,9 +275,9 @@ An agent that validates actions before execution (also an example of how to use 
 
     ```python
     import re
-    from minisweagent.agents.default import DefaultAgent
-    from minisweagent.environments.local import LocalEnvironment, LocalEnvironmentConfig
-    from minisweagent.models.litellm_model import LitellmModel
+    from leanimum.agents.default import DefaultAgent
+    from leanimum.environments.local import LocalEnvironment, LocalEnvironmentConfig
+    from leanimum.models.litellm_model import LitellmModel
 
     class EnvironmentWithForbiddenPatternsConfig(LocalEnvironmentConfig):
         forbidden_patterns: list[str] = [
@@ -277,18 +294,19 @@ An agent that validates actions before execution (also an example of how to use 
             command = action.get("command", "")
             for pattern in self.config.forbidden_patterns:
                 if re.search(pattern, command, re.IGNORECASE):
-                    return {"output": "Action blocked: forbidden pattern detected", "returncode": 1}
+                    return {"output": "Action blocked: forbidden pattern detected", "returncode": 1, "exception_info": ""}
             return super().execute(action, cwd)
 
     agent = DefaultAgent(
-        LitellmModel(model_name=model_name),
+        LitellmModel(model_name=model_name, **config["model"]),
         EnvironmentWithForbiddenPatterns(),
+        **config["agent"],
     )
     ```
 
-### Running mini-swe-agent on Ray
+### Running Leanimum-agent on Ray
 
 [This blog post](https://www.anyscale.com/blog/massively-parallel-agentic-simulations-with-ray)
-describes how to parallelize mini-swe-agent runs with Ray.
+describes how to parallelize Leanimum-agent runs with Ray.
 
-{% include-markdown "_footer.md" %}
+{% include-markdown "../_footer.md" %}

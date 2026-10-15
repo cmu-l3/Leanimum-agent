@@ -2,13 +2,9 @@
 
 !!! abstract "Overview"
 
-    mini-SWE-agent saves run results in JSON format. This page documents the structure of these output files.
+    Leanimum-agent saves run results in JSON format. This page documents the structure of these output files.
 
 ## Trajectory files (`.traj.json`)
-
-!!! warning "v2.0 format changes"
-
-    The output format changed in v2.0 (`trajectory_format: mini-swe-agent-1.1`). See the [v2 migration guide](../advanced/v2_migration.md) for more information.
 
 !!! tip "Viewing trajectory files"
 
@@ -27,13 +23,13 @@ Trajectory files contain the full history of an agent run, including all message
     },
     "config": {
       "agent": { ... },  // agent configuration
-      "agent_type": "minisweagent.agents.default.DefaultAgent",
+      "agent_type": "leanimum.agents.default.DefaultAgent",
       "model": { ... },  // model configuration
-      "model_type": "minisweagent.models.litellm_model.LitellmModel",
+      "model_type": "leanimum.models.litellm_model.LitellmModel",
       "environment": { ... },  // environment configuration
-      "environment_type": "minisweagent.environments.local.LocalEnvironment"
+      "environment_type": "leanimum.environments.local.LocalEnvironment"
     },
-    "mini_version": "2.0.0",  // version of mini-SWE-agent used
+    "mini_version": "2.0.0",  // version of Leanimum-agent used
     "exit_status": "Submitted",  // final status (Submitted, LimitsExceeded, etc.)
     "submission": "..."  // final output/patch submitted by the agent (if any)
   },
@@ -43,15 +39,15 @@ Trajectory files contain the full history of an agent run, including all message
     {"role": "assistant", "content": "..."},
     ...
   ],
-  "trajectory_format": "mini-swe-agent-1.1"  // format version identifier
+  "trajectory_format": "leanimum-agent-1.1"  // format version identifier
 }
 ```
 
 
-Messages follow the [OpenAI chat format](https://platform.openai.com/docs/api-reference/chat) with an additional `extra` field for mini-SWE-agent metadata. Models may add other fields to messages (e.g., `tool_calls`, `reasoning_content`).
+Messages follow the [OpenAI chat format](https://platform.openai.com/docs/api-reference/chat) with an additional `extra` field for Leanimum-agent metadata. Models may add other fields to messages (e.g., `tool_calls`, `reasoning_content`).
 
 !!! note "Toolcall models"
-    When using toolcall-based models (e.g., `LitellmToolcallModel`), the roles differ slightly: assistant messages include `tool_calls` instead of content, and observation messages use `role: "tool"` with a `tool_call_id` field.
+    When using toolcall-based models (e.g., `LitellmModel`), the roles differ slightly: assistant messages include `tool_calls` instead of content, and observation messages use `role: "tool"` with a `tool_call_id` field.
 
 ```json
 // System message (agent instructions)
@@ -63,7 +59,7 @@ Messages follow the [OpenAI chat format](https://platform.openai.com/docs/api-re
 // Assistant message (model response with parsed actions)
 {
   "role": "assistant",
-  "content": "Let me check the files...\n\n```mswea_bash_command\nls -la\n```",
+  "content": "Let me check the files...\n\n```leana_bash_command\nls -la\n```",
   "extra": {
     "actions": [{"command": "ls -la"}],  // parsed actions to execute
     "cost": 0.003,  // cost of this API call
@@ -84,8 +80,8 @@ Messages follow the [OpenAI chat format](https://platform.openai.com/docs/api-re
 
 // Final message (when agent submits)
 {
-  "role": "user",
-  "content": "",
+  "role": "exit",
+  "content": "diff --git a/gu2020hat.lean...",
   "extra": {
     "exit_status": "Submitted",
     "submission": "diff --git a/file.py..."
@@ -96,14 +92,14 @@ Messages follow the [OpenAI chat format](https://platform.openai.com/docs/api-re
 
 ## `preds.json` format
 
-The predictions file aggregates results from all instances in a format compatible with SWE-bench evaluation:
+The predictions file aggregates results from all instances for independent ReuF2F evaluation:
 
 ```json
 {
-  "owner__repo__123": {  // keyed by instance_id
+  "gu2020hat": {  // keyed by instance_id
     "model_name_or_path": "anthropic/claude-sonnet-4-5-20250929",  // model used
-    "instance_id": "owner__repo__123",  // SWE-bench instance identifier
-    "model_patch": "diff --git a/file.py b/file.py\n..."  // generated patch (unified diff)
+    "instance_id": "gu2020hat",  // ReuF2F instance identifier
+    "model_patch": "diff --git a/gu2020hat.lean b/gu2020hat.lean\n..."  // generated patch (unified diff)
   },
   ...
 }

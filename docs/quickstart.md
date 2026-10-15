@@ -4,61 +4,61 @@
 
     === "pip"
 
-        Use pip to install `mini` in your current environment:
+        Use pip to install `leani` in your current environment:
 
         ```bash
-        pip install mini-swe-agent
+        pip install "git+https://github.com/cmu-l3/Leanimum-agent.git"
         ```
 
         And try our command line interface
 
         ```bash
-        mini  # CLI
-        mini-extra  # extra utilities
+        leani  # CLI
+        leani-extra  # extra utilities
         ```
 
     === "uv (isolated)"
 
-        Use `uv`/`uvx` ([installation](https://docs.astral.sh/uv/getting-started/installation/)) to directly run the `mini` CLI.
-        Use this if you're only interested in the CLI but don't need python bindings (`mini` will be installed in an anonymous virtual environment).
+        Use `uv`/`uvx` ([installation](https://docs.astral.sh/uv/getting-started/installation/)) to directly run the `leani` CLI.
+        Use this if you're only interested in the CLI but don't need python bindings (`leani` will be installed in an anonymous virtual environment).
 
         Quickly install + run:
 
         ```bash
-        uvx mini-swe-agent  # CLI
-        uvx --from mini-swe-agent mini-extra  # extra utilities
+        uvx --from "git+https://github.com/cmu-l3/Leanimum-agent.git" leani  # CLI
+        uvx --from "git+https://github.com/cmu-l3/Leanimum-agent.git" leani-extra  # extra utilities
         ```
 
         Permanently install
 
         ```bash
-        uv tool install mini-swe-agent
+        uv tool install "git+https://github.com/cmu-l3/Leanimum-agent.git"
         # then
-        mini  # CLI
-        mini-extra  # extra utilities
+        leani  # CLI
+        leani-extra  # extra utilities
         ```
 
     === "pipx (isolated)"
 
-        Use pipx ([installation](https://pipx.pypa.io/stable/installation/)) to directly run the `mini` CLI.
-        Use this if you're only interested in the CLI but don't need python bindings (`mini` will be installed in an anonymous virtual environment).
+        Use pipx ([installation](https://pipx.pypa.io/stable/how-to/install-pipx.html)) to directly run the `leani` CLI.
+        Use this if you're only interested in the CLI but don't need python bindings (`leani` will be installed in an anonymous virtual environment).
 
         Quick install + run:
 
         ```bash
         # CLI
-        pipx run mini-swe-agent
+        pipx run --spec "git+https://github.com/cmu-l3/Leanimum-agent.git" leani
         # Extra utilities
-        pipx run --spec mini-swe-agent mini-extra
+        pipx run --spec "git+https://github.com/cmu-l3/Leanimum-agent.git" leani-extra
         ```
 
         or for a persistent installation (recommended):
 
         ```bash
-        pipx install mini-swe-agent
+        pipx install "git+https://github.com/cmu-l3/Leanimum-agent.git"
         # then
-        mini  # CLI
-        mini-extra  # extra utilities
+        leani  # CLI
+        leani-extra  # extra utilities
         ```
 
         If the invocation doesn't immediately work, you might need to run `pipx ensurepath`.
@@ -68,22 +68,22 @@
         For development or if you want to customize the agent:
 
         ```bash
-        git clone https://github.com/SWE-agent/mini-swe-agent.git
-        cd mini-swe-agent
+        git clone https://github.com/cmu-l3/Leanimum-agent.git
+        cd Leanimum-agent
         pip install -e .
         ```
 
         Then run:
 
         ```bash
-        mini  # CLI
-        mini-extra  # extra utilities
+        leani  # CLI
+        leani-extra  # extra utilities
         ```
 
-        Or pick a [run script](https://github.com/SWE-agent/mini-swe-agent/tree/main/src/minisweagent/run):
+        Or pick a [run script](https://github.com/cmu-l3/Leanimum-agent/tree/main/src/leanimum/run):
 
         ```bash
-        python src/minisweagent/run/hello_world.py
+        python src/leanimum/run/hello_world.py
         ```
 
         If you are planning to contribute, please also install the dev dependencies
@@ -103,15 +103,11 @@
 
 !!! note "Changelog"
 
-    Please see the [github release notes](https://github.com/SWE-agent/mini-swe-agent/releases) for recent changes.
-
-!!! info "Upgrading to v2?"
-
-    Check out our [v2 migration guide](advanced/v2_migration.md) for all the changes and how to update your code.
+    Please see the [github release notes](https://github.com/cmu-l3/Leanimum-agent/releases) for recent changes.
 
 !!! example "Example Prompts"
 
-    Try mini-SWE-agent with these example prompts:
+    Try Leanimum-agent with these example prompts:
 
     - Implement a Sudoku solver in python in the `sudoku` folder. Make sure the codebase is modular and well tested with pytest.
     - Please run pytest on the current project, discover failing unittests and help me fix them. Always make sure to test the final solution.
@@ -119,16 +115,10 @@
 
 ## Models
 
-!!! note "Models should be set up the first time you run `mini`"
+!!! note "Models should be set up the first time you run `leani`"
 
-    * If you missed the setup wizard, just run `mini-extra config setup`
+    * If you missed the setup wizard, just run `leani-extra config setup`
     * For more information, please check the [model setup quickstart](models/quickstart.md).
     * If you want to use local models, please check this [guide](models/local_models.md).
 
     Tip: Please always include the provider in the model name, e.g., `anthropic/claude-...`.
-
-!!! success "Which model to use?"
-
-    We recommend using `anthropic/claude-opus-4-6-20260205` for most tasks.
-    For openai models, we recommend using `openai/gpt-5.4` or `openai/gpt-5.4-mini`.
-    You can check scores of different models at our [SWE-bench (bash-only)](https://swebench.com) leaderboard.

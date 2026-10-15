@@ -1,16 +1,16 @@
-# mini-SWE-agent overview
+# Leanimum-agent overview
 
-- mini-SWE-agent implements an AI software engineering agent that solves github issues and similar programming challenges
+- Leanimum-agent implements a bash-only agent for Lean proofs and programs
 - The idea of this project is to write the simplest, smallest, most readable agent.
 
 The project is structured as
 
 ```bash
-minisweagent/__init__  # Protocols/interfaces for all base classes
-minisweagent/agents  # Agent control flow & loop
-minisweagent/environments  # Executing agent actions
-minisweagent/models  # LM interfaces
-minisweagent/run  # Run scripts that serve as an entry point
+src/leanimum/__init__  # Protocols/interfaces for all base classes
+src/leanimum/agents  # Agent control flow & loop
+src/leanimum/environments  # Executing agent actions
+src/leanimum/models  # LM interfaces
+src/leanimum/run  # Run scripts that serve as an entry point
 ```
 
 - The project embraces polymorphism: Every individual class should be simple, but we offer alternatives
@@ -103,7 +103,7 @@ Use these component names in parentheses for `fix`, `feat`, `enh`, and `ref` com
 - `agents` - Changes to agent classes (default, interactive, multimodal)
 - `env` - Changes to environments (docker, local, singularity, bubblewrap, swerex)
 - `config` - Changes to configuration files or config handling
-- `run` - Changes to run scripts (mini, hello_world)
-- `benchmarks` - Changes to benchmark runners (swebench, inspector)
+- `run` - Changes to run scripts (leani, hello_world)
+- `benchmarks` - Changes to benchmark runners (reuf2f)
 - `cli` - Changes to CLI argument handling
 - `deps` - Dependency updates
