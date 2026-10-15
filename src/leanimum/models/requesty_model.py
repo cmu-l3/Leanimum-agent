@@ -68,8 +68,8 @@ class RequestyModel:
         headers = {
             "Authorization": f"Bearer {self._api_key}",
             "Content-Type": "application/json",
-            "HTTP-Referer": "https://github.com/SWE-agent/mini-swe-agent",
-            "X-Title": "mini-swe-agent",
+            "HTTP-Referer": "https://github.com/cmu-l3/Leanimum-agent",
+            "X-Title": "Leanimum-agent",
         }
 
         payload = {
