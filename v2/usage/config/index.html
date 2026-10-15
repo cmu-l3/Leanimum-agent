@@ -15,7 +15,7 @@
         
       
       
-      <link rel="icon" href="../../assets/mini_square.svg">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
@@ -61,8 +61,6 @@
       <link rel="stylesheet" href="../../assets/mkdocstrings.css">
     
       <link rel="stylesheet" href="../../assets/image_theme.css">
-    
-      <link rel="stylesheet" href="../../assets/bubbles.css">
     
       <link rel="stylesheet" href="../../assets/navigation_cards.css">
     
@@ -120,23 +118,6 @@
     </div>
     <div data-md-component="announce">
       
-        <aside class="md-banner">
-          <div class="md-banner__inner md-grid md-typeset">
-            
-              <button class="md-banner__button md-icon" aria-label="Don't show this again">
-                
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
-              </button>
-            
-            
-<a href="../reuf2f/">Leanimum-agent: bash-only Lean workflows and ReuF2F</a>
-
-          </div>
-          
-            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
-          
-        </aside>
-      
     </div>
     
       <div data-md-color-scheme="default" data-md-component="outdated" hidden="">
@@ -152,7 +133,8 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Leanimum-agent documentation" class="md-header__button md-logo" aria-label="Leanimum-agent documentation" data-md-component="logo">
       
-  <img src="../../assets/mini_square.svg" alt="logo">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -354,7 +336,8 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Leanimum-agent documentation" class="md-nav__button md-logo" aria-label="Leanimum-agent documentation" data-md-component="logo">
       
-  <img src="../../assets/mini_square.svg" alt="logo">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
     Leanimum-agent documentation
@@ -2549,13 +2532,13 @@
 <div class="admonition abstract">
 <p class="admonition-title">Overview</p>
 <ul>
-<li>Manage the global <code>.env</code> file with <code>leani-extra config</code>.</li>
-<li>Run <code>leani-extra config --help</code> to list commands and show the file location.</li>
+<li><code>leani-extra config</code> is a utility to manage the global configuration file.</li>
+<li>Quickly start the it with <code>leani-extra config</code> or <code>leani-e config</code>.</li>
 </ul>
 </div>
 <h2 id="commands">Commands</h2>
 <h3 id="setup"><code>setup</code></h3>
-<p>Configure the default model and a provider API key interactively.</p>
+<p>Interactive setup wizard that helps you configure your default model and API keys.</p>
 <div class="highlight"><pre><span></span><code>leani-extra<span class="w"> </span>config<span class="w"> </span>setup
 </code></pre></div>
 <p>This will prompt you for:</p>
@@ -2565,9 +2548,9 @@
 </ol>
 <h3 id="set"><code>set</code></h3>
 <p>Set a specific key in the global config file.</p>
-<div class="highlight"><pre><span></span><code>leani-extra<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>LEANA_MODEL_NAME<span class="w"> </span>YOUR_MODEL
-
-<span class="c1"># Prompt for the key and value</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># example: set default model</span>
+leani-extra<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>LEANA_MODEL_NAME<span class="w"> </span>anthropic/claude-sonnet-4-5-20250929
+<span class="c1"># or interactively</span>
 leani-extra<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span>
 </code></pre></div>
 <h3 id="unset"><code>unset</code></h3>

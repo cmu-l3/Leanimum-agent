@@ -13,7 +13,7 @@
         
       
       
-      <link rel="icon" href="assets/mini_square.svg">
+      <link rel="icon" href="assets/images/favicon.png">
       <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
@@ -59,8 +59,6 @@
       <link rel="stylesheet" href="assets/mkdocstrings.css">
     
       <link rel="stylesheet" href="assets/image_theme.css">
-    
-      <link rel="stylesheet" href="assets/bubbles.css">
     
       <link rel="stylesheet" href="assets/navigation_cards.css">
     
@@ -118,23 +116,6 @@
     </div>
     <div data-md-component="announce">
       
-        <aside class="md-banner">
-          <div class="md-banner__inner md-grid md-typeset">
-            
-              <button class="md-banner__button md-icon" aria-label="Don't show this again">
-                
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
-              </button>
-            
-            
-<a href="usage/reuf2f/">Leanimum-agent: bash-only Lean workflows and ReuF2F</a>
-
-          </div>
-          
-            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
-          
-        </aside>
-      
     </div>
     
       <div data-md-color-scheme="default" data-md-component="outdated" hidden="">
@@ -150,7 +131,8 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="." title="Leanimum-agent documentation" class="md-header__button md-logo" aria-label="Leanimum-agent documentation" data-md-component="logo">
       
-  <img src="assets/mini_square.svg" alt="logo">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -352,7 +334,8 @@
   <label class="md-nav__title" for="__drawer">
     <a href="." title="Leanimum-agent documentation" class="md-nav__button md-logo" aria-label="Leanimum-agent documentation" data-md-component="logo">
       
-  <img src="assets/mini_square.svg" alt="logo">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
     Leanimum-agent documentation
@@ -2297,6 +2280,25 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#continue-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Continue reading:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2321,17 +2323,109 @@
 
 
 <h1 id="leanimum-agent">Leanimum-agent</h1>
-<p>Leanimum-agent is a minimal bash-only assistant for Lean proofs and programs.
-It searches libraries, edits files and runs compiler checks through a shell tool.</p>
+<p>A minimal bash-only agent for Lean proofs and programs, based on
+<a href="https://github.com/SWE-agent/mini-swe-agent">mini-swe-agent</a>.
+Use <a href="usage/mini/">leani</a> interactively or run the <a href="usage/reuf2f/">ReuF2F benchmark</a>.</p>
+<details class="note">
+<summary>Why use Leanimum-agent for research?</summary>
+<p>The <code>leani</code> agent:</p>
 <ul>
-<li><a href="quickstart/">Quick start</a>: install and run a Lean task.</li>
-<li><a href="usage/reuf2f/">ReuF2F</a>: generate patches for the built-in benchmark.</li>
-<li><a href="advanced/yaml_configuration/">Configuration</a>: select models, prompts and budgets.</li>
-<li><a href="advanced/environments/">Execution environments</a>: local and container backends.</li>
-<li><a href="usage/output_files/">Output files</a>: predictions, trajectories and inspection.</li>
-<li><a href="usage/python_bindings/">Python bindings</a>: use or extend the agent in code.</li>
+<li><strong>Does not have any tools other than bash</strong>. The default model uses bash tool calls; text command blocks are also supported.
+  This means that you can run it with literally any model.
+  When running in sandboxed environments you also don't need to take care of installing a single package — all it needs is bash.</li>
+<li><strong>Has a completely linear history</strong> — every step of the agent just appends to the messages and that's it.
+  So there's no difference between the trajectory and the messages that you pass on to the LM.
+  Great for debugging &amp; fine-tuning.</li>
+<li><strong>Executes actions with <code>subprocess.run</code></strong> — every action is completely independent (as opposed to keeping a stateful shell session running). This makes it trivial to execute the actions in sandboxes (literally just switch out <code>subprocess.run</code> with <code>docker exec</code>) and to scale up effortlessly.
+  Seriously, this is <a href="faq/#why-no-shell-session">a big deal</a>, trust me.</li>
 </ul>
-<p>ReuF2F performs independent grading; agent completion is not a proof verdict.</p>
+</details>
+<details class="note">
+<summary>Why use Leanimum-agent as a tool?</summary>
+<p>Some agents are overfitted research artifacts. Others are UI-heavy frontend monsters.</p>
+<p>The <code>leani</code> agent wants to be a hackable tool, not a black box.</p>
+<ul>
+<li><strong>Simple</strong> enough to understand at a glance</li>
+<li><strong>Convenient</strong> enough to use in daily workflows</li>
+<li>
+<p><strong>Flexible</strong> to extend</p>
+</li>
+<li>
+<p><strong>Does not have any tools other than bash</strong>. The default model uses bash tool calls; text command blocks are also supported.
+  Instead of implementing custom tools for every specific thing the agent might want to do, the focus is fully on the LM utilizing the shell to its full potential.
+  Want it to do something specific like opening a PR?
+  Just tell the LM to figure it out rather than spending time to implement it in the agent.</p>
+</li>
+<li><strong>Executes actions with <code>subprocess.run</code></strong> — every action is completely independent (as opposed to keeping a stateful shell session running).
+  This is <a href="faq/#why-no-shell-session">a big deal</a> for the stability of the agent, trust me.</li>
+<li><strong>Has a completely linear history</strong> — every step of the agent just appends to the messages that are passed to the LM in the next step and that's it.
+  This is great for debugging and understanding what the LM is prompted with.</li>
+</ul>
+</details>
+<h2 id="continue-reading">Continue reading:</h2>
+<div class="grid cards">
+  <a href="quickstart/" class="nav-card-link">
+    <div class="nav-card">
+      <div class="nav-card-header">
+        <span class="material-icons nav-card-icon">launch</span>
+        <span class="nav-card-title">Installation &amp; Quick Start</span>
+      </div>
+      <p class="nav-card-description">Get started with Leanimum-agent</p>
+    </div>
+  </a>
+
+  <a href="usage/mini/" class="nav-card-link">
+    <div class="nav-card">
+      <div class="nav-card-header">
+        <span class="material-icons nav-card-icon">flash_on</span>
+        <span class="nav-card-title">Usage: Simple UI</span>
+      </div>
+      <p class="nav-card-description">Learn to use the <code>leani</code> command</p>
+    </div>
+  </a>
+
+  <a href="faq/" class="nav-card-link">
+    <div class="nav-card">
+      <div class="nav-card-header">
+        <span class="material-icons nav-card-icon">help</span>
+        <span class="nav-card-title">FAQ</span>
+      </div>
+      <p class="nav-card-description">Common questions and answers</p>
+    </div>
+  </a>
+
+  <a href="advanced/yaml_configuration/" class="nav-card-link">
+    <div class="nav-card">
+      <div class="nav-card-header">
+        <span class="material-icons nav-card-icon">settings</span>
+        <span class="nav-card-title">Configuration</span>
+      </div>
+      <p class="nav-card-description">Setup and customize your agent</p>
+    </div>
+  </a>
+
+  <a href="advanced/cookbook/" class="nav-card-link">
+    <div class="nav-card">
+      <div class="nav-card-header">
+        <span class="material-icons nav-card-icon">fitness_center</span>
+        <span class="nav-card-title">Power up</span>
+      </div>
+      <p class="nav-card-description">Start hacking the agent!</p>
+    </div>
+  </a>
+</div>
+
+<div class="grid cards">
+  <a href="https://github.com/cmu-l3/Leanimum-agent/issues/new" class="nav-card-link">
+    <div class="nav-card">
+      <div class="nav-card-header">
+        <span class="material-icons nav-card-icon">bug_report</span>
+        <span class="nav-card-title">Something broken/unclear?</span>
+      </div>
+      <p class="nav-card-description">Open an issue on GitHub!</p>
+    </div>
+  </a>
+</div>
 
 
 

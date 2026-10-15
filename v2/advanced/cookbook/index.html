@@ -15,7 +15,7 @@
         
       
       
-      <link rel="icon" href="../../assets/mini_square.svg">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
@@ -61,8 +61,6 @@
       <link rel="stylesheet" href="../../assets/mkdocstrings.css">
     
       <link rel="stylesheet" href="../../assets/image_theme.css">
-    
-      <link rel="stylesheet" href="../../assets/bubbles.css">
     
       <link rel="stylesheet" href="../../assets/navigation_cards.css">
     
@@ -120,23 +118,6 @@
     </div>
     <div data-md-component="announce">
       
-        <aside class="md-banner">
-          <div class="md-banner__inner md-grid md-typeset">
-            
-              <button class="md-banner__button md-icon" aria-label="Don't show this again">
-                
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
-              </button>
-            
-            
-<a href="../../usage/reuf2f/">Leanimum-agent: bash-only Lean workflows and ReuF2F</a>
-
-          </div>
-          
-            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
-          
-        </aside>
-      
     </div>
     
       <div data-md-color-scheme="default" data-md-component="outdated" hidden="">
@@ -152,7 +133,8 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Leanimum-agent documentation" class="md-header__button md-logo" aria-label="Leanimum-agent documentation" data-md-component="logo">
       
-  <img src="../../assets/mini_square.svg" alt="logo">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -354,7 +336,8 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Leanimum-agent documentation" class="md-nav__button md-logo" aria-label="Leanimum-agent documentation" data-md-component="logo">
       
-  <img src="../../assets/mini_square.svg" alt="logo">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
     Leanimum-agent documentation
@@ -1151,6 +1134,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#hello-world" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hello world
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#mix-match" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1159,9 +1153,60 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Mix &amp; match">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Models
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agents
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
+  <a href="#advanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#customizing-execution" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1171,26 +1216,20 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#custom-completion-command" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#running-leanimum-agent-on-ray" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Custom completion command
+        Running Leanimum-agent on Ray
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#validate-actions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Validate actions
-      
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2399,6 +2438,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#hello-world" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hello world
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#mix-match" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2407,9 +2457,60 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Mix &amp; match">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Models
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agents
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
+  <a href="#advanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#customizing-execution" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2419,26 +2520,20 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#custom-completion-command" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#running-leanimum-agent-on-ray" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Custom completion command
+        Running Leanimum-agent on Ray
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#validate-actions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Validate actions
-      
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2469,71 +2564,183 @@
 
 <h1 id="cookbook">Cookbook</h1>
 <div class="admonition abstract">
-<p class="admonition-title">Remixing &amp; extending Leanimum-agent</p>
+<p class="admonition-title">Remixing &amp; extending leani</p>
 <ul>
-<li>Compose model, agent and environment classes to build a custom workflow.</li>
-<li>Start with the <a href="../control_flow/">default agent control flow</a>.</li>
+<li>This guide shows how to mix the different components of the <code>leani</code> agent to create your own custom version.</li>
+<li>You might want to first take a look at the <a href="../control_flow/">control flow of the default agent</a> first</li>
 </ul>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Development setup</p>
 <p>Make sure to follow the dev setup instructions in <a href="../../quickstart/">quickstart.md</a>.</p>
 </div>
+<p>We provide several different entry points to the agent,
+for example <a href="https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/run/hello_world.py">hello world</a>,
+or the <a href="https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/run/mini.py">default when calling <code>leani</code></a>.</p>
+<p>Want to cook up your custom version and the config is not enough?
+Just follow the recipe below:</p>
+<ol>
+<li>What's the control flow you need? Pick an <a href="https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/agents">agent class</a> (e.g., <a href="https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/agents/default.py">simplest example</a>, <a href="https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/agents/interactive.py">with human in the loop</a>)</li>
+<li>How should actions be executed? Pick an <a href="https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/environments">environment class</a> (e.g., <a href="https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/environments/local.py">local</a>, or <a href="https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/environments/docker.py">docker</a>)</li>
+<li>How is the LM queried? Pick a <a href="https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/models">model class</a> (e.g., <a href="https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/models/litellm_model.py">litellm</a>)</li>
+<li>How to invoke the agent? Bind them all together in a <a href="https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/run">run script</a>, possibly reading from a <a href="https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/config">config</a> (e.g., <a href="https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/run/hello_world.py">hello world</a>, or <a href="https://github.com/cmu-l3/Leanimum-agent/blob/main/src/leanimum/run/mini.py"><code>leani</code> entry point</a>)</li>
+</ol>
+<p>We aim to keep all of these components very simple, but offer lots of choice between them -- enough to cover a broad range of
+things that you might want to do.</p>
+<p>Run your custom entry point directly with Python, or select classes through the agent, model and environment configuration.</p>
+<h2 id="hello-world">Hello world</h2>
+<p>See <a href="../../usage/python_bindings/">Python bindings</a> for the most basic example.</p>
 <h2 id="mix-match">Mix &amp; match</h2>
-<p>Choose an <a href="../../reference/agents/default/">agent</a>,
-<a href="../../reference/models/overview/">model</a> and <a href="../environments/">environment</a>, then
-combine them in a run script. Start with the configured example in
-<a href="../../usage/python_bindings/">Python bindings</a>; subclasses still need the agent's
-prompt templates and matching model configuration.</p>
-<h2 id="customizing-execution">Customizing execution</h2>
-<p>Handle a custom command with a Python function, leaving other commands unchanged.
-This example treats <code>python_function</code> arguments as words, not shell expressions.
-Each result includes the fields needed by the observation template.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Subclassing the agent</label><label for="__tabbed_1_2">Subclassing the environment</label></div>
+<p>The examples below share this configuration, which supplies the prompt templates
+required by the agent and the matching model settings:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_config_from_spec</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">get_config_from_spec</span><span class="p">(</span><span class="s2">"mini"</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="models">Models</h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Hello world (use automatic model selection)</label><label for="__tabbed_1_2">Hello world (Litellm)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">shlex</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.agents.default</span><span class="w"> </span><span class="kn">import</span> <span class="n">DefaultAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.environments.local</span><span class="w"> </span><span class="kn">import</span> <span class="n">LocalEnvironment</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.agents.default</span><span class="w"> </span><span class="kn">import</span> <span class="n">DefaultAgent</span>
+<span class="n">model_name</span> <span class="o">=</span> <span class="s2">"anthropic/claude-sonnet-4-5-20250929"</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">python_function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s2">"output"</span><span class="p">:</span> <span class="s2">" "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"returncode"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"exception_info"</span><span class="p">:</span> <span class="s2">""</span><span class="p">}</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">AgentWithPythonFunctions</span><span class="p">(</span><span class="n">DefaultAgent</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">execute_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
-        <span class="n">outputs</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"extra"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"actions"</span><span class="p">,</span> <span class="p">[]):</span>
-            <span class="n">command</span> <span class="o">=</span> <span class="n">action</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"command"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">command</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">maxsplit</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="s2">"python_function"</span><span class="p">]:</span>
-                <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">python_function</span><span class="p">(</span><span class="o">*</span><span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">command</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]))</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">action</span><span class="p">))</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_messages</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">format_observation_messages</span><span class="p">(</span>
-            <span class="n">message</span><span class="p">,</span> <span class="n">outputs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_template_vars</span><span class="p">()</span>
-        <span class="p">))</span>
+<span class="n">agent</span> <span class="o">=</span> <span class="n">DefaultAgent</span><span class="p">(</span>
+    <span class="n">get_model</span><span class="p">(</span><span class="n">input_model_name</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s2">"model"</span><span class="p">]),</span>
+    <span class="n">LocalEnvironment</span><span class="p">(),</span>
+    <span class="o">**</span><span class="n">config</span><span class="p">[</span><span class="s2">"agent"</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">shlex</span>
-
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.agents.default</span><span class="w"> </span><span class="kn">import</span> <span class="n">DefaultAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.models.litellm_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LitellmModel</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.environments.local</span><span class="w"> </span><span class="kn">import</span> <span class="n">LocalEnvironment</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">python_function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s2">"output"</span><span class="p">:</span> <span class="s2">" "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"returncode"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"exception_info"</span><span class="p">:</span> <span class="s2">""</span><span class="p">}</span>
+<span class="n">model_name</span> <span class="o">=</span> <span class="s2">"gpt-4o"</span>
+
+<span class="n">agent</span> <span class="o">=</span> <span class="n">DefaultAgent</span><span class="p">(</span>
+    <span class="n">LitellmModel</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span> <span class="o">**</span><span class="n">config</span><span class="p">[</span><span class="s2">"model"</span><span class="p">]),</span>
+    <span class="n">LocalEnvironment</span><span class="p">(),</span>
+    <span class="o">**</span><span class="n">config</span><span class="p">[</span><span class="s2">"agent"</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="environments">Environments</h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Hello world with local execution</label><label for="__tabbed_2_2">Hello world with docker execution</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.environments.local</span><span class="w"> </span><span class="kn">import</span> <span class="n">LocalEnvironment</span>
+
+<span class="n">agent</span> <span class="o">=</span> <span class="n">DefaultAgent</span><span class="p">(</span>
+    <span class="n">LitellmModel</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span> <span class="o">**</span><span class="n">config</span><span class="p">[</span><span class="s2">"model"</span><span class="p">]),</span>
+    <span class="n">LocalEnvironment</span><span class="p">(),</span>
+    <span class="o">**</span><span class="n">config</span><span class="p">[</span><span class="s2">"agent"</span><span class="p">],</span>
+<span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.environments.docker</span><span class="w"> </span><span class="kn">import</span> <span class="n">DockerEnvironment</span>
+
+<span class="n">agent</span> <span class="o">=</span> <span class="n">DefaultAgent</span><span class="p">(</span>
+    <span class="n">LitellmModel</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span> <span class="o">**</span><span class="n">config</span><span class="p">[</span><span class="s2">"model"</span><span class="p">]),</span>
+    <span class="n">DockerEnvironment</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="s2">"YOUR_IMAGE"</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="s2">"/testbed"</span><span class="p">),</span>
+    <span class="o">**</span><span class="n">config</span><span class="p">[</span><span class="s2">"agent"</span><span class="p">],</span>
+<span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="agents">Agents</h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Default agent</label><label for="__tabbed_3_2">Human in the loop</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.agents.default</span><span class="w"> </span><span class="kn">import</span> <span class="n">DefaultAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.environments.local</span><span class="w"> </span><span class="kn">import</span> <span class="n">LocalEnvironment</span>
+
+<span class="n">agent</span> <span class="o">=</span> <span class="n">DefaultAgent</span><span class="p">(</span>
+    <span class="n">get_model</span><span class="p">(</span><span class="n">input_model_name</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s2">"model"</span><span class="p">]),</span>
+    <span class="n">LocalEnvironment</span><span class="p">(),</span>
+    <span class="o">**</span><span class="n">config</span><span class="p">[</span><span class="s2">"agent"</span><span class="p">],</span>
+<span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.agents.interactive</span><span class="w"> </span><span class="kn">import</span> <span class="n">InteractiveAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.environments.local</span><span class="w"> </span><span class="kn">import</span> <span class="n">LocalEnvironment</span>
+
+<span class="n">agent</span> <span class="o">=</span> <span class="n">InteractiveAgent</span><span class="p">(</span>
+    <span class="n">get_model</span><span class="p">(</span><span class="n">input_model_name</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s2">"model"</span><span class="p">]),</span>
+    <span class="n">LocalEnvironment</span><span class="p">(),</span>
+    <span class="o">**</span><span class="n">config</span><span class="p">[</span><span class="s2">"agent"</span><span class="p">],</span>
+<span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="advanced">Advanced</h2>
+<h3 id="customizing-execution">Customizing execution</h3>
+<p>An agent that uses python function for some actions:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Subclassing the agent</label><label for="__tabbed_4_2">Subclassing the environment</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.agents.default</span><span class="w"> </span><span class="kn">import</span> <span class="n">DefaultAgent</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">shlex</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">python_function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="o">...</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">"output"</span><span class="p">:</span> <span class="s2">"..."</span><span class="p">,</span> <span class="s2">"returncode"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"exception_info"</span><span class="p">:</span> <span class="s2">""</span><span class="p">}</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">AgentWithPythonFunctions</span><span class="p">(</span><span class="n">DefaultAgent</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">execute_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"extra"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"actions"</span><span class="p">,</span> <span class="p">[]):</span>
+            <span class="n">command</span> <span class="o">=</span> <span class="n">action</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"command"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">command</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"python_function"</span><span class="p">):</span>
+                <span class="n">args</span> <span class="o">=</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">command</span><span class="o">.</span><span class="n">removeprefix</span><span class="p">(</span><span class="s2">"python_function"</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_messages</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">format_observation_messages</span><span class="p">(</span>
+                    <span class="n">message</span><span class="p">,</span> <span class="p">[</span><span class="n">python_function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)],</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_template_vars</span><span class="p">()</span>
+                <span class="p">))</span>
+        <span class="c1"># everything else works as usual</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">execute_actions</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.agents.default</span><span class="w"> </span><span class="kn">import</span> <span class="n">DefaultAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.environments.local</span><span class="w"> </span><span class="kn">import</span> <span class="n">LocalEnvironment</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">shlex</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">python_function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="o">...</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">"output"</span><span class="p">:</span> <span class="s2">"..."</span><span class="p">,</span> <span class="s2">"returncode"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"exception_info"</span><span class="p">:</span> <span class="s2">""</span><span class="p">}</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">EnvironmentWithPythonFunctions</span><span class="p">(</span><span class="n">LocalEnvironment</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">cwd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
         <span class="n">command</span> <span class="o">=</span> <span class="n">action</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"command"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">command</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">maxsplit</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="s2">"python_function"</span><span class="p">]:</span>
-            <span class="k">return</span> <span class="n">python_function</span><span class="p">(</span><span class="o">*</span><span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">command</span><span class="p">)[</span><span class="mi">1</span><span class="p">:])</span>
+        <span class="k">if</span> <span class="n">command</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"python_function"</span><span class="p">):</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">command</span><span class="o">.</span><span class="n">removeprefix</span><span class="p">(</span><span class="s2">"python_function"</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+            <span class="k">return</span> <span class="n">python_function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+        <span class="c1"># all other commands are executed as usual</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">cwd</span><span class="p">)</span>
+
+<span class="n">agent</span> <span class="o">=</span> <span class="n">DefaultAgent</span><span class="p">(</span>
+    <span class="n">LitellmModel</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span> <span class="o">**</span><span class="n">config</span><span class="p">[</span><span class="s2">"model"</span><span class="p">]),</span>
+    <span class="n">EnvironmentWithPythonFunctions</span><span class="p">(),</span>
+    <span class="o">**</span><span class="n">config</span><span class="p">[</span><span class="s2">"agent"</span><span class="p">],</span>
+<span class="p">)</span>
 </code></pre></div>
 </div>
 </div>
 </div>
-<h2 id="custom-completion-command">Custom completion command</h2>
-<p>Exit when <code>submit</code> is issued as a standalone action:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Subclassing the agent</label><label for="__tabbed_2_2">Subclassing the environment</label></div>
+<p>An agent that exits when the <code>submit</code> command is issued:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio"><input id="__tabbed_5_2" name="__tabbed_5" type="radio"><div class="tabbed-labels"><label for="__tabbed_5_1">Subclassing the agent</label><label for="__tabbed_5_2">Subclassing the environment</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.agents.default</span><span class="w"> </span><span class="kn">import</span> <span class="n">DefaultAgent</span>
@@ -2541,17 +2748,21 @@ Each result includes the fields needed by the observation template.</p>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">AgentQuitsOnSubmit</span><span class="p">(</span><span class="n">DefaultAgent</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">execute_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
-        <span class="k">if</span> <span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"command"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"extra"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"actions"</span><span class="p">,</span> <span class="p">[])]</span> <span class="o">==</span> <span class="p">[</span><span class="s2">"submit"</span><span class="p">]:</span>
-            <span class="k">raise</span> <span class="n">Submitted</span><span class="p">({</span>
-                <span class="s2">"role"</span><span class="p">:</span> <span class="s2">"exit"</span><span class="p">,</span>
-                <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"The agent has finished its task."</span><span class="p">,</span>
-                <span class="s2">"extra"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"exit_status"</span><span class="p">:</span> <span class="s2">"Submitted"</span><span class="p">,</span> <span class="s2">"submission"</span><span class="p">:</span> <span class="s2">""</span><span class="p">},</span>
-            <span class="p">})</span>
+        <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"extra"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"actions"</span><span class="p">,</span> <span class="p">[]):</span>
+            <span class="k">if</span> <span class="n">action</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"command"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"submit"</span><span class="p">:</span>
+                <span class="c1"># The `Submitted` exception will be caught by the agent and</span>
+                <span class="c1"># the final output will be printed.</span>
+                <span class="k">raise</span> <span class="n">Submitted</span><span class="p">({</span>
+                    <span class="s2">"role"</span><span class="p">:</span> <span class="s2">"exit"</span><span class="p">,</span>
+                    <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"The agent has finished its task."</span><span class="p">,</span>
+                    <span class="s2">"extra"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"exit_status"</span><span class="p">:</span> <span class="s2">"Submitted"</span><span class="p">,</span> <span class="s2">"submission"</span><span class="p">:</span> <span class="s2">""</span><span class="p">},</span>
+                <span class="p">})</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">execute_actions</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.environments.local</span><span class="w"> </span><span class="kn">import</span> <span class="n">LocalEnvironment</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.agents.default</span><span class="w"> </span><span class="kn">import</span> <span class="n">DefaultAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.environments.local</span><span class="w"> </span><span class="kn">import</span> <span class="n">LocalEnvironment</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Submitted</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">EnvironmentQuitsOnSubmit</span><span class="p">(</span><span class="n">LocalEnvironment</span><span class="p">):</span>
@@ -2563,19 +2774,24 @@ Each result includes the fields needed by the observation template.</p>
                 <span class="s2">"extra"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"exit_status"</span><span class="p">:</span> <span class="s2">"Submitted"</span><span class="p">,</span> <span class="s2">"submission"</span><span class="p">:</span> <span class="s2">""</span><span class="p">},</span>
             <span class="p">})</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">cwd</span><span class="p">)</span>
+
+<span class="n">agent</span> <span class="o">=</span> <span class="n">DefaultAgent</span><span class="p">(</span>
+    <span class="n">LitellmModel</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span> <span class="o">**</span><span class="n">config</span><span class="p">[</span><span class="s2">"model"</span><span class="p">]),</span>
+    <span class="n">EnvironmentQuitsOnSubmit</span><span class="p">(),</span>
+    <span class="o">**</span><span class="n">config</span><span class="p">[</span><span class="s2">"agent"</span><span class="p">],</span>
+<span class="p">)</span>
 </code></pre></div>
 </div>
 </div>
 </div>
-<h2 id="validate-actions">Validate actions</h2>
-<p>Extend the configuration with patterns to reject before execution.
-These checks illustrate subclassing; regex matching is not a security sandbox.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Subclassing the agent</label><label for="__tabbed_3_2">Subclassing the environment</label></div>
+<p>An agent that validates actions before execution (also an example of how to use an extended config class):</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio"><input id="__tabbed_6_2" name="__tabbed_6" type="radio"><div class="tabbed-labels"><label for="__tabbed_6_1">Subclassing the agent</label><label for="__tabbed_6_2">Subclassing the environment</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.agents.default</span><span class="w"> </span><span class="kn">import</span> <span class="n">DefaultAgent</span><span class="p">,</span> <span class="n">AgentConfig</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">FormatError</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">ValidatingAgentConfig</span><span class="p">(</span><span class="n">AgentConfig</span><span class="p">):</span>
     <span class="n">forbidden_patterns</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
@@ -2601,7 +2817,9 @@ These checks illustrate subclassing; regex matching is not a security sandbox.</
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.agents.default</span><span class="w"> </span><span class="kn">import</span> <span class="n">DefaultAgent</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.environments.local</span><span class="w"> </span><span class="kn">import</span> <span class="n">LocalEnvironment</span><span class="p">,</span> <span class="n">LocalEnvironmentConfig</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">leanimum.models.litellm_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LitellmModel</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">EnvironmentWithForbiddenPatternsConfig</span><span class="p">(</span><span class="n">LocalEnvironmentConfig</span><span class="p">):</span>
     <span class="n">forbidden_patterns</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
@@ -2618,16 +2836,21 @@ These checks illustrate subclassing; regex matching is not a security sandbox.</
         <span class="n">command</span> <span class="o">=</span> <span class="n">action</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"command"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">forbidden_patterns</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">command</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">):</span>
-                <span class="k">return</span> <span class="p">{</span>
-                    <span class="s2">"output"</span><span class="p">:</span> <span class="s2">"Action blocked: forbidden pattern detected"</span><span class="p">,</span>
-                    <span class="s2">"returncode"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-                    <span class="s2">"exception_info"</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
-                <span class="p">}</span>
+                <span class="k">return</span> <span class="p">{</span><span class="s2">"output"</span><span class="p">:</span> <span class="s2">"Action blocked: forbidden pattern detected"</span><span class="p">,</span> <span class="s2">"returncode"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"exception_info"</span><span class="p">:</span> <span class="s2">""</span><span class="p">}</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">cwd</span><span class="p">)</span>
+
+<span class="n">agent</span> <span class="o">=</span> <span class="n">DefaultAgent</span><span class="p">(</span>
+    <span class="n">LitellmModel</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span> <span class="o">**</span><span class="n">config</span><span class="p">[</span><span class="s2">"model"</span><span class="p">]),</span>
+    <span class="n">EnvironmentWithForbiddenPatterns</span><span class="p">(),</span>
+    <span class="o">**</span><span class="n">config</span><span class="p">[</span><span class="s2">"agent"</span><span class="p">],</span>
+<span class="p">)</span>
 </code></pre></div>
 </div>
 </div>
 </div>
+<h3 id="running-leanimum-agent-on-ray">Running Leanimum-agent on Ray</h3>
+<p><a href="https://www.anyscale.com/blog/massively-parallel-agentic-simulations-with-ray">This blog post</a>
+describes how to parallelize Leanimum-agent runs with Ray.</p>
 <div class="grid cards">
   <a href="https://github.com/cmu-l3/Leanimum-agent/issues/new" class="nav-card-link">
     <div class="nav-card">

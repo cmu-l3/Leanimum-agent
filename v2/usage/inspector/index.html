@@ -15,7 +15,7 @@
         
       
       
-      <link rel="icon" href="../../assets/mini_square.svg">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
@@ -61,8 +61,6 @@
       <link rel="stylesheet" href="../../assets/mkdocstrings.css">
     
       <link rel="stylesheet" href="../../assets/image_theme.css">
-    
-      <link rel="stylesheet" href="../../assets/bubbles.css">
     
       <link rel="stylesheet" href="../../assets/navigation_cards.css">
     
@@ -113,29 +111,12 @@
     <div data-md-component="skip">
       
         
-        <a href="#inspector" class="md-skip">
+        <a href="#inspector-browse-agent-trajectories" class="md-skip">
           Skip to content
         </a>
       
     </div>
     <div data-md-component="announce">
-      
-        <aside class="md-banner">
-          <div class="md-banner__inner md-grid md-typeset">
-            
-              <button class="md-banner__button md-icon" aria-label="Don't show this again">
-                
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
-              </button>
-            
-            
-<a href="../reuf2f/">Leanimum-agent: bash-only Lean workflows and ReuF2F</a>
-
-          </div>
-          
-            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
-          
-        </aside>
       
     </div>
     
@@ -152,7 +133,8 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Leanimum-agent documentation" class="md-header__button md-logo" aria-label="Leanimum-agent documentation" data-md-component="logo">
       
-  <img src="../../assets/mini_square.svg" alt="logo">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -354,7 +336,8 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Leanimum-agent documentation" class="md-nav__button md-logo" aria-label="Leanimum-agent documentation" data-md-component="logo">
       
-  <img src="../../assets/mini_square.svg" alt="logo">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
     Leanimum-agent documentation
@@ -720,9 +703,10 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Key bindings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#faq" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -730,6 +714,11 @@
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2418,9 +2407,10 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Key bindings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#faq" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2428,6 +2418,11 @@
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2467,26 +2462,26 @@
   
 
 
-<h1 id="inspector">Inspector</h1>
+<h1 id="inspector-browse-agent-trajectories">Inspector: Browse agent trajectories</h1>
 <div class="admonition abstract">
 <p class="admonition-title">Overview</p>
 <ul>
-<li>Browse <code>.traj.json</code> files with <code>leani-extra inspector</code> or <code>leani-e i</code>.</li>
-<li>See <a href="../output_files/">output files</a> for the trajectory format.</li>
-<li>Use <a href="https://jless.io/">jless</a> to inspect raw JSON.</li>
+<li>The <code>inspector</code> is a tool that allows you to browse <code>.traj.json</code> files that show the history of a Leanimum-agent run.</li>
+<li>Quickly start it with <code>leani-e i</code> or <code>leani-extra inspector</code>.</li>
+<li>See <a href="../output_files/">output files</a> for the trajectory file format.</li>
+<li>Alternative: <a href="https://jless.io/">jless</a> is a great command-line JSON viewer for browsing trajectories.</li>
 </ul>
 </div>
 <h2 id="usage">Usage</h2>
-<div class="highlight"><pre><span></span><code><span class="c1"># Search the current directory recursively</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Find all .traj.json files recursively from current directory</span>
 leani-extra<span class="w"> </span>inspector
-
-<span class="c1"># Open one trajectory</span>
-leani-extra<span class="w"> </span>inspector<span class="w"> </span>/path/to/task.traj.json
-
-<span class="c1"># Search another directory</span>
-leani-extra<span class="w"> </span>inspector<span class="w"> </span>/path/to/results
+<span class="c1"># or shorter</span>
+leani-e<span class="w"> </span>i
+<span class="c1"># Open the inspector for a specific file</span>
+leani-e<span class="w"> </span>i<span class="w"> </span>&lt;path_to_traj.json&gt;
+<span class="c1"># Search for trajectory files in a specific directory</span>
+leani-e<span class="w"> </span>i<span class="w"> </span>&lt;path_to_directory&gt;
 </code></pre></div>
-<p>Use <code>--no-reasoning</code> to hide reasoning initially.</p>
 <h2 id="key-bindings">Key bindings</h2>
 <ul>
 <li><code>q</code>: Quit the inspector</li>
@@ -2496,11 +2491,9 @@ leani-extra<span class="w"> </span>inspector<span class="w"> </span>/path/to/res
 <li><code>k</code>/<code>UP</code>: Scroll up</li>
 <li><code>H</code>: Previous trajectory</li>
 <li><code>L</code>: Next trajectory</li>
-<li><code>e</code> / <code>E</code>: Open the current step / full trajectory in jless</li>
-<li><code>r</code>: Toggle reasoning</li>
-<li><code>R</code>: Reload the trajectory from disk</li>
+<li><code>e</code>: Open current step in <a href="https://jless.io/">jless</a></li>
 </ul>
-<h2 id="faq">FAQ</h2>
+<h3 id="faq">FAQ</h3>
 <blockquote>
 <p>How can I select/copy text on the screen?</p>
 </blockquote>

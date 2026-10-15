@@ -15,7 +15,7 @@
         
       
       
-      <link rel="icon" href="../../assets/mini_square.svg">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
@@ -61,8 +61,6 @@
       <link rel="stylesheet" href="../../assets/mkdocstrings.css">
     
       <link rel="stylesheet" href="../../assets/image_theme.css">
-    
-      <link rel="stylesheet" href="../../assets/bubbles.css">
     
       <link rel="stylesheet" href="../../assets/navigation_cards.css">
     
@@ -120,23 +118,6 @@
     </div>
     <div data-md-component="announce">
       
-        <aside class="md-banner">
-          <div class="md-banner__inner md-grid md-typeset">
-            
-              <button class="md-banner__button md-icon" aria-label="Don't show this again">
-                
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
-              </button>
-            
-            
-<a href="../reuf2f/">Leanimum-agent: bash-only Lean workflows and ReuF2F</a>
-
-          </div>
-          
-            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
-          
-        </aside>
-      
     </div>
     
       <div data-md-color-scheme="default" data-md-component="outdated" hidden="">
@@ -152,7 +133,8 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Leanimum-agent documentation" class="md-header__button md-logo" aria-label="Leanimum-agent documentation" data-md-component="logo">
       
-  <img src="../../assets/mini_square.svg" alt="logo">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -354,7 +336,8 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Leanimum-agent documentation" class="md-nav__button md-logo" aria-label="Leanimum-agent documentation" data-md-component="logo">
       
-  <img src="../../assets/mini_square.svg" alt="logo">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
     Leanimum-agent documentation
@@ -757,38 +740,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#reuf2f-batch-outputs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ReuF2F batch outputs
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ReuF2F batch outputs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#predsjson-format" class="md-nav__link">
     <span class="md-ellipsis">
       
         preds.json format
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#failures-and-resume" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Failures and resume
       
     </span>
   </a>
@@ -2450,38 +2405,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#reuf2f-batch-outputs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ReuF2F batch outputs
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ReuF2F batch outputs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#predsjson-format" class="md-nav__link">
     <span class="md-ellipsis">
       
         preds.json format
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#failures-and-resume" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Failures and resume
       
     </span>
   </a>
@@ -2516,117 +2443,96 @@
 <h1 id="output-files">Output files</h1>
 <div class="admonition abstract">
 <p class="admonition-title">Overview</p>
-<p>Leanimum-agent saves trajectories as JSON. The ReuF2F runner also saves
-patch predictions, logs and batch termination statuses.</p>
+<p>Leanimum-agent saves run results in JSON format. This page documents the structure of these output files.</p>
 </div>
 <h2 id="trajectory-files-trajjson">Trajectory files (<code>.traj.json</code>)</h2>
-<p>A trajectory records messages, configuration, model costs and termination status.
-Its format identifier is <code>leanimum-agent-1.1</code>.</p>
 <div class="admonition tip">
-<p class="admonition-title">Viewing trajectories</p>
-<p>Browse a file or directory with the <a href="../inspector/">inspector</a>:</p>
-<div class="highlight"><pre><span></span><code>leani-extra<span class="w"> </span>inspect<span class="w"> </span>/path/to/INSTANCE_ID.traj.json
-</code></pre></div>
+<p class="admonition-title">Viewing trajectory files</p>
+<p>Use the <a href="../inspector/">inspector</a> to browse trajectory files interactively.</p>
 </div>
+<p>Trajectory files contain the full history of an agent run, including all messages, configuration, and metadata.</p>
 <h3 id="structure">Structure</h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Contents</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>info.model_stats</code></td>
-<td><code>instance_cost</code> and <code>api_calls</code> for the run</td>
-</tr>
-<tr>
-<td><code>info.config</code></td>
-<td>Agent/model/environment configuration and class names</td>
-</tr>
-<tr>
-<td><code>info.mini_version</code></td>
-<td>Installed agent package version</td>
-</tr>
-<tr>
-<td><code>info.exit_status</code></td>
-<td>Termination status, such as <code>Submitted</code> or <code>LimitsExceeded</code></td>
-</tr>
-<tr>
-<td><code>info.submission</code></td>
-<td>Submitted text, or an empty value if none was produced</td>
-</tr>
-<tr>
-<td><code>messages</code></td>
-<td>Full conversation, including command observations</td>
-</tr>
-<tr>
-<td><code>trajectory_format</code></td>
-<td>Format identifier</td>
-</tr>
-</tbody>
-</table>
-<p>The ReuF2F runner adds <code>instance_id</code> at the top level. Exceptions may add
-<code>exception_str</code> and <code>traceback</code> under <code>info</code>.</p>
-<p>Messages contain model-specific fields and an <code>extra</code> dictionary for parsed
-actions, costs and execution results. Tool-call observations use the provider's
-tool message format; text-based models use rendered user messages. The terminal
-message has <code>role: "exit"</code>.</p>
-<div class="admonition note">
-<p class="admonition-title">Submitted is not a proof verdict</p>
-<p><code>Submitted</code> means the agent requested completion. ReuF2F evaluates the patch
-independently to decide whether a proof or refutation is accepted.</p>
-</div>
-<h2 id="reuf2f-batch-outputs">ReuF2F batch outputs</h2>
-<table>
-<thead>
-<tr>
-<th>Path</th>
-<th>Contents</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>preds.json</code></td>
-<td>ID-keyed patch predictions</td>
-</tr>
-<tr>
-<td><code>leanimum.log</code></td>
-<td>Runner messages and failures</td>
-</tr>
-<tr>
-<td><code>exit_statuses_TIMESTAMP.yaml</code></td>
-<td>Batch termination statuses</td>
-</tr>
-<tr>
-<td><code>INSTANCE_ID/INSTANCE_ID.traj.json</code></td>
-<td>Agent trajectory</td>
-</tr>
-</tbody>
-</table>
-<h3 id="predsjson-format"><code>preds.json</code> format</h3>
-<p>Each record has three fields:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">"gu2020hat"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"instance_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gu2020hat"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"model_name_or_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-model"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"model_patch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"diff --git a/gu2020hat.lean b/gu2020hat.lean\n..."</span>
+<span class="w">  </span><span class="nt">"info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"model_stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"instance_cost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w">  </span><span class="c1">// total cost of API calls for this run</span>
+<span class="w">      </span><span class="nt">"api_calls"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">  </span><span class="c1">// number of API calls made</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"agent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">  </span><span class="c1">// agent configuration</span>
+<span class="w">      </span><span class="nt">"agent_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"leanimum.agents.default.DefaultAgent"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"model"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">  </span><span class="c1">// model configuration</span>
+<span class="w">      </span><span class="nt">"model_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"leanimum.models.litellm_model.LitellmModel"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"environment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">  </span><span class="c1">// environment configuration</span>
+<span class="w">      </span><span class="nt">"environment_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"leanimum.environments.local.LocalEnvironment"</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"mini_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0.0"</span><span class="p">,</span><span class="w">  </span><span class="c1">// version of Leanimum-agent used</span>
+<span class="w">    </span><span class="nt">"exit_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Submitted"</span><span class="p">,</span><span class="w">  </span><span class="c1">// final status (Submitted, LimitsExceeded, etc.)</span>
+<span class="w">    </span><span class="nt">"submission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">  </span><span class="c1">// final output/patch submitted by the agent (if any)</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">  </span><span class="c1">// full conversation history</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"system"</span><span class="p">,</span><span class="w"> </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w"> </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assistant"</span><span class="p">,</span><span class="w"> </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">},</span>
+<span class="w">    </span><span class="err">...</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"trajectory_format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"leanimum-agent-1.1"</span><span class="w">  </span><span class="c1">// format version identifier</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Messages follow the <a href="https://platform.openai.com/docs/api-reference/chat">OpenAI chat format</a> with an additional <code>extra</code> field for Leanimum-agent metadata. Models may add other fields to messages (e.g., <code>tool_calls</code>, <code>reasoning_content</code>).</p>
+<div class="admonition note">
+<p class="admonition-title">Toolcall models</p>
+<p>When using toolcall-based models (e.g., <code>LitellmModel</code>), the roles differ slightly: assistant messages include <code>tool_calls</code> instead of content, and observation messages use <code>role: "tool"</code> with a <code>tool_call_id</code> field.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="c1">// System message (agent instructions)</span>
+<span class="p">{</span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"system"</span><span class="p">,</span><span class="w"> </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You are a helpful assistant..."</span><span class="p">}</span>
+
+<span class="c1">// User message (task description)</span>
+<span class="p">{</span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w"> </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please solve this issue: ..."</span><span class="p">}</span>
+
+<span class="c1">// Assistant message (model response with parsed actions)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assistant"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Let me check the files...\n\n```leana_bash_command\nls -la\n```"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"extra"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"actions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ls -la"</span><span class="p">}],</span><span class="w">  </span><span class="c1">// parsed actions to execute</span>
+<span class="w">    </span><span class="nt">"cost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.003</span><span class="p">,</span><span class="w">  </span><span class="c1">// cost of this API call</span>
+<span class="w">    </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mf">1706000000.0</span><span class="p">,</span><span class="w">  </span><span class="c1">// unix timestamp of when this message was created</span>
+<span class="w">    </span><span class="nt">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">  </span><span class="c1">// raw API response</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Observation message (execution result)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;returncode&gt;0&lt;/returncode&gt;\n&lt;output&gt;\nfile1.py\nfile2.py\n&lt;/output&gt;"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"extra"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"returncode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mf">1706000001.0</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Final message (when agent submits)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exit"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"diff --git a/gu2020hat.lean..."</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"extra"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"exit_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Submitted"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"submission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"diff --git a/file.py..."</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><code>model_patch</code> contains diff text, not a filename or verdict. Pass predictions and
-the same dataset to the <a href="../reuf2f/#predictions-and-evaluation">evaluator</a>.</p>
-<h2 id="failures-and-resume">Failures and resume</h2>
-<ul>
-<li>Model initialization errors write no prediction or trajectory and can be retried
-  by resuming the run.</li>
-<li>Later setup/agent failures can write an empty prediction. Trajectories are saved
-  when an agent was constructed.</li>
-<li>Existing IDs in <code>preds.json</code>, including empty predictions, are skipped unless
-  <code>--redo-existing</code> is set. Deleting a trajectory alone does not rerun an ID.</li>
-<li>Unsubmitted edits are not recovered.</li>
-</ul>
+<h2 id="predsjson-format"><code>preds.json</code> format</h2>
+<p>The predictions file aggregates results from all instances for independent ReuF2F evaluation:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"gu2020hat"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// keyed by instance_id</span>
+<span class="w">    </span><span class="nt">"model_name_or_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"anthropic/claude-sonnet-4-5-20250929"</span><span class="p">,</span><span class="w">  </span><span class="c1">// model used</span>
+<span class="w">    </span><span class="nt">"instance_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gu2020hat"</span><span class="p">,</span><span class="w">  </span><span class="c1">// ReuF2F instance identifier</span>
+<span class="w">    </span><span class="nt">"model_patch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"diff --git a/gu2020hat.lean b/gu2020hat.lean\n..."</span><span class="w">  </span><span class="c1">// generated patch (unified diff)</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="err">...</span>
+<span class="p">}</span>
+</code></pre></div>
 <div class="grid cards">
   <a href="https://github.com/cmu-l3/Leanimum-agent/issues/new" class="nav-card-link">
     <div class="nav-card">

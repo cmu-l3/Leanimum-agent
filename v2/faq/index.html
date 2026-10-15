@@ -15,7 +15,7 @@
         
       
       
-      <link rel="icon" href="../assets/mini_square.svg">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
@@ -61,8 +61,6 @@
       <link rel="stylesheet" href="../assets/mkdocstrings.css">
     
       <link rel="stylesheet" href="../assets/image_theme.css">
-    
-      <link rel="stylesheet" href="../assets/bubbles.css">
     
       <link rel="stylesheet" href="../assets/navigation_cards.css">
     
@@ -120,23 +118,6 @@
     </div>
     <div data-md-component="announce">
       
-        <aside class="md-banner">
-          <div class="md-banner__inner md-grid md-typeset">
-            
-              <button class="md-banner__button md-icon" aria-label="Don't show this again">
-                
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
-              </button>
-            
-            
-<a href="../usage/reuf2f/">Leanimum-agent: bash-only Lean workflows and ReuF2F</a>
-
-          </div>
-          
-            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
-          
-        </aside>
-      
     </div>
     
       <div data-md-color-scheme="default" data-md-component="outdated" hidden="">
@@ -152,7 +133,8 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="Leanimum-agent documentation" class="md-header__button md-logo" aria-label="Leanimum-agent documentation" data-md-component="logo">
       
-  <img src="../assets/mini_square.svg" alt="logo">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -354,7 +336,8 @@
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="Leanimum-agent documentation" class="md-nav__button md-logo" aria-label="Leanimum-agent documentation" data-md-component="logo">
       
-  <img src="../assets/mini_square.svg" alt="logo">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
     Leanimum-agent documentation
@@ -1213,10 +1196,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#what-tools-can-the-model-use" class="md-nav__link">
+  <a href="#general" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What tools can the model use?
+        General
       
     </span>
   </a>
@@ -1224,10 +1207,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#does-it-work-with-any-lean-repository" class="md-nav__link">
+  <a href="#models" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Does it work with any Lean repository?
+        Models
       
     </span>
   </a>
@@ -1235,65 +1218,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-benchmarks-are-included" class="md-nav__link">
+  <a href="#minutia" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What benchmarks are included?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#is-comparator-built-into-the-agent" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Is Comparator built into the agent?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#is-local-execution-sandboxed" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Is local execution sandboxed?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#where-is-configuration-stored" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Where is configuration stored?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#why-no-shell-session" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why no shell session?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-does-submitted-mean" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What does Submitted mean?
+        Minutia
       
     </span>
   </a>
@@ -2441,10 +2369,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#what-tools-can-the-model-use" class="md-nav__link">
+  <a href="#general" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What tools can the model use?
+        General
       
     </span>
   </a>
@@ -2452,10 +2380,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#does-it-work-with-any-lean-repository" class="md-nav__link">
+  <a href="#models" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Does it work with any Lean repository?
+        Models
       
     </span>
   </a>
@@ -2463,65 +2391,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-benchmarks-are-included" class="md-nav__link">
+  <a href="#minutia" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What benchmarks are included?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#is-comparator-built-into-the-agent" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Is Comparator built into the agent?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#is-local-execution-sandboxed" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Is local execution sandboxed?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#where-is-configuration-stored" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Where is configuration stored?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#why-no-shell-session" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why no shell session?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-does-submitted-mean" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What does Submitted mean?
+        Minutia
       
     </span>
   </a>
@@ -2554,36 +2427,87 @@
 
 
 <h1 id="faq">FAQ</h1>
-<h2 id="what-tools-can-the-model-use">What tools can the model use?</h2>
-<p>One: <code>bash</code>. Files, searches, edits and compiler checks all use shell commands.
-Native tool calls and text command blocks are two encodings of that interface.</p>
-<h2 id="does-it-work-with-any-lean-repository">Does it work with any Lean repository?</h2>
-<p>Use a prepared project with its own toolchain and dependencies. The generic CLI
-can work there without the ReuF2F task format. Compatibility with every historical
-Lean release is not guaranteed.</p>
-<h2 id="what-benchmarks-are-included">What benchmarks are included?</h2>
-<p><a href="../usage/reuf2f/">ReuF2F</a> is the built-in benchmark. Leanimum produces patches;
-the separate benchmark repository owns task preparation and independent grading.</p>
-<h2 id="is-comparator-built-into-the-agent">Is Comparator built into the agent?</h2>
-<p>No. It is an external command-line tool. The ReuF2F image includes the verification
-binaries, but official grading still runs separately from the solver container.</p>
-<h2 id="is-local-execution-sandboxed">Is local execution sandboxed?</h2>
-<p>No. A working directory is not a security boundary. Use an appropriate
-<a href="../advanced/environments/">backend</a> or a disposable host for untrusted code.
-ReuF2F defaults to Docker and does not fall back to local after a Docker failure.</p>
-<h2 id="where-is-configuration-stored">Where is configuration stored?</h2>
-<p>The CLI prints the global configuration directory at startup. Run
-<code>leani-extra config setup</code> to configure credentials and a model. Set
-<code>LEANA_GLOBAL_CONFIG_DIR</code> to separate the settings from another installation.
-See <a href="../advanced/global_configuration/">global configuration</a>.</p>
-<h2 id="why-no-shell-session">Why no shell session?</h2>
+<h2 id="general">General</h2>
+<div class="admonition question">
+<p class="admonition-title">Does Leanimum-agent work on my system?</p>
+<p>Leanimum-agent should work on any system that has a bash shell or uses a container runtime (e.g., docker, singularity, apptainer, etc.) to emulate one.</p>
+</div>
+<details class="question">
+<summary>What keeps the agent simple?</summary>
+<p><code>leani</code> keeps its execution model simple:</p>
+<ul>
+<li>Does not have any tools other than bash. The default model uses bash tool calls; text command blocks are also supported.
+  This means you don't have to install anything in any environment you're running in. <code>bash</code> is all you need.</li>
+<li>Has a completely linear history — every step of the agent just appends to the messages and that's it.</li>
+<li>Executes actions with <code>subprocess.run</code> — every action is completely independent (as opposed to keeping a stateful shell session running).
+  This <a href="#why-no-shell-session">avoids so many issues</a>, trust me.</li>
+</ul>
+</details>
+<details class="question">
+<summary>What are the limitations of Leanimum-agent?</summary>
+<p>Leanimum-agent can be extended trivially in various ways, the following assumes the default setup.</p>
+<ul>
+<li>No tools other than bash</li>
+<li>Actions use bash tool calls by default; text command blocks are also supported</li>
+<li>By default, actions are executed as <code>subprocess.run</code>, i.e., every action is independent of the previous ones.
+  (meaning that the agent cannot change directories or export environment variables; however environment variables
+  can be set per-action). This <a href="#why-no-shell-session">avoids so many issues</a>, trust me.</li>
+</ul>
+</details>
+<details class="question">
+<summary>Where is global configuration stored?</summary>
+<p>The global configuration is stored in the <code>.env</code> file in the config directory.
+The location is printed when you run <code>leani --help</code>.</p>
+<p>The <code>.env</code> file is a simple key-value file that is read by the <code>dotenv</code> library.</p>
+</details>
+<h2 id="models">Models</h2>
+<div class="admonition question">
+<p class="admonition-title">What models do you support?</p>
+<p>Currently, Leanimum-agent supports all models that are supported by <a href="https://github.com/BerriAI/litellm">litellm</a>
+or <a href="https://openrouter.ai/">OpenRouter</a>
+and we're open to extend the <code>models/</code> directory with more models should <code>litellm</code> not support them.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">How do I set the API key for a model?</p>
+<p>The API key can be stored either as an environment variable (note that enviroinment variables are not persistent
+unless you set them in your <code>~/.bashrc</code> or similar), or as a permanent key in the config file.</p>
+<p>To temporarily set the API key as an environment variable, you can use the following command:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">OPENAI_API_KEY</span><span class="o">=</span>sk-test123
+</code></pre></div>
+<p>To permanently set the API key in the config file, you can use the following command:</p>
+<div class="highlight"><pre><span></span><code>leani-extra<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>OPENAI_API_KEY<span class="w"> </span>sk-test123
+</code></pre></div>
+<p>Alternatively, you can directly edit the <code>.env</code> file in the config directory
+(the location is printed when you run <code>leani --help</code>).</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">How can I set the default model?</p>
+<p>The default model is stored in the config/environment as <code>LEANA_MODEL_NAME</code>.
+To permanently change it:</p>
+<div class="highlight"><pre><span></span><code>leani-extra<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>LEANA_MODEL_NAME<span class="w"> </span>anthropic/claude-sonnet-4-5-20250929
+</code></pre></div>
+<p>Alternatively, you can directly edit the <code>.env</code> file in the config directory
+(the location is printed when you run <code>leani --help</code>).</p>
+</div>
+<h2 id="minutia">Minutia</h2>
+<details class="question">
+<summary>Why is not needing a running shell session such a big deal?</summary>
 <p><a name="why-no-shell-session"></a></p>
-<p>Files persist, but commands run independently. A previous <code>cd</code> or <code>export</code> does
-not carry into the next call. Use an explicit working directory or source the
-required environment in each command.</p>
-<h2 id="what-does-submitted-mean">What does Submitted mean?</h2>
-<p>The agent requested completion. It is not a proof verdict; use ReuF2F's independent
-evaluator for acceptance. See <a href="../usage/output_files/">output files</a>.</p>
+<p>Most agents so far kept a running shell session. Every action from the agent was executed in this session.
+However, this is far from trivial:</p>
+<ol>
+<li>It's not obvious when a command has terminated. Essentially you're just pasting input into the shell session, and press enter—but when do you stop reading output?
+   We've experimented with various heuristics (watching PIDs, watching for the shell to go back to the prompt, etc.) but all of them were flaky.
+   The <code>leani</code> agent doesn't need any of this!</li>
+<li>Particularly bad commands from the LM can kill the shell session. Then what?</li>
+<li>Interrupting a command running in a shell session can also mess up the shell itself and can in particular interfere with all the following outputs you want to extract.</li>
+</ol>
+<p><code>leani</code> is different: There is no running shell session. Every action is executed as a subprocess, that means
+every action is independent of the previous ones (it is literally a <code>subprocess.run</code>/<code>os.system</code>/<code>docker exec</code> call).</p>
+<p>This means that the agent cannot even change directories or export environment variables.
+But you don't need this! You can always prefix <code>cd /path/to/project</code> or <code>export FOO=bar</code> to every action
+(and in fact some LMs like Claude will do that even if you don't ask them to).</p>
+</details>
 <div class="grid cards">
   <a href="https://github.com/cmu-l3/Leanimum-agent/issues/new" class="nav-card-link">
     <div class="nav-card">

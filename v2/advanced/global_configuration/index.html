@@ -15,7 +15,7 @@
         
       
       
-      <link rel="icon" href="../../assets/mini_square.svg">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
@@ -61,8 +61,6 @@
       <link rel="stylesheet" href="../../assets/mkdocstrings.css">
     
       <link rel="stylesheet" href="../../assets/image_theme.css">
-    
-      <link rel="stylesheet" href="../../assets/bubbles.css">
     
       <link rel="stylesheet" href="../../assets/navigation_cards.css">
     
@@ -120,23 +118,6 @@
     </div>
     <div data-md-component="announce">
       
-        <aside class="md-banner">
-          <div class="md-banner__inner md-grid md-typeset">
-            
-              <button class="md-banner__button md-icon" aria-label="Don't show this again">
-                
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
-              </button>
-            
-            
-<a href="../../usage/reuf2f/">Leanimum-agent: bash-only Lean workflows and ReuF2F</a>
-
-          </div>
-          
-            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
-          
-        </aside>
-      
     </div>
     
       <div data-md-color-scheme="default" data-md-component="outdated" hidden="">
@@ -152,7 +133,8 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Leanimum-agent documentation" class="md-header__button md-logo" aria-label="Leanimum-agent documentation" data-md-component="logo">
       
-  <img src="../../assets/mini_square.svg" alt="logo">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -354,7 +336,8 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Leanimum-agent documentation" class="md-nav__button md-logo" aria-label="Leanimum-agent documentation" data-md-component="logo">
       
-  <img src="../../assets/mini_square.svg" alt="logo">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
     Leanimum-agent documentation
@@ -1001,9 +984,10 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Default config files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#settings-for-environments" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1011,6 +995,11 @@
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2429,9 +2418,10 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Default config files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#settings-for-environments" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2439,6 +2429,11 @@
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2469,77 +2464,99 @@
 
 <h1 id="global-configuration">Global configuration</h1>
 <div class="admonition abstract">
-<p class="admonition-title">Overview</p>
+<p class="admonition-title">Configuring leani</p>
 <ul>
-<li>Global settings include provider credentials, the default model and cost limits.</li>
-<li>For prompts and per-run options, see <a href="../yaml_configuration/">YAML configuration</a>.</li>
-<li>See <a href="../../models/quickstart/">model setup</a> for provider-specific settings.</li>
+<li>This guide shows how to configure the <code>leani</code> agent's global settings (API keys, default model, etc.).
+  Basically anything that is set as environment variables or similar.</li>
+<li>You should already be familiar with the <a href="../../quickstart/">quickstart guide</a>.</li>
+<li>For more agent specific settings, see the <a href="../yaml_configuration/">yaml configuration file guide</a>.</li>
 </ul>
 </div>
+<div class="admonition tip">
+<p class="admonition-title">Setting up models</p>
+<p>Setting up models is also covered in the <a href="../../quickstart/">quickstart guide</a>.</p>
+</div>
 <h2 id="setting-global-configuration">Setting global configuration</h2>
-<p>Settings come from environment variables or the global <code>.env</code> file. At startup,
-environment variables take precedence over values in that file. The default
-location is the platform-specific configuration directory for <code>leanimum-agent</code>;
-set <code>LEANA_GLOBAL_CONFIG_DIR</code> before launch to use another directory.</p>
-<p>Configure a model and API key interactively:</p>
+<p>All global configuration can be either set as environment variables, or in the <code>.env</code> file (the exact location is printed when you run <code>leani</code>).
+Environment variables take precedence over variables set in the <code>.env</code> file.</p>
+<p>We provide several helper functions to update the global configuration.</p>
+<p>For example, to set the default model and API keys, you can run:</p>
 <div class="highlight"><pre><span></span><code>leani-extra<span class="w"> </span>config<span class="w"> </span>setup
 </code></pre></div>
-<p>Use <a href="../../usage/config/">config commands</a> to set, remove or edit saved values.
-For a temporary shell setting:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Bash</label><label for="__tabbed_1_2">PowerShell</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">LEANA_MODEL_NAME</span><span class="o">=</span><span class="s2">"YOUR_MODEL"</span>
+<p>or to update specific settings:</p>
+<div class="highlight"><pre><span></span><code>leani-extra config set KEY VALUE
+# e.g.,
+leani-extra config set LEANA_MODEL_NAME "anthropic/claude-sonnet-4-5-20250929"
+leani-extra config set ANTHROPIC_API_KEY "sk-..."
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nv">$env:LEANA_MODEL_NAME</span> <span class="p">=</span> <span class="s2">"YOUR_MODEL"</span>
+<p>or to unset a key:</p>
+<div class="highlight"><pre><span></span><code>leani-extra<span class="w"> </span>config<span class="w"> </span><span class="nb">unset</span><span class="w"> </span>KEY
+<span class="c1"># e.g.,</span>
+leani-extra<span class="w"> </span>config<span class="w"> </span><span class="nb">unset</span><span class="w"> </span>ANTHROPIC_API_KEY
 </code></pre></div>
-</div>
-</div>
-</div>
-<p>The Bash examples below use <code>export</code>. In the <code>.env</code> file, use <code>KEY="value"</code>
-without <code>export</code>.</p>
+<p>You can also edit the <code>.env</code> file directly and we provide a helper function for that:</p>
+<div class="highlight"><pre><span></span><code>leani-extra<span class="w"> </span>config<span class="w"> </span>edit
+</code></pre></div>
+<p>To set environment variables (recommended for temporary experimentation or API keys):</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">KEY</span><span class="o">=</span><span class="s2">"value"</span>
+<span class="c1"># windows:</span>
+setx<span class="w"> </span>KEY<span class="w"> </span><span class="s2">"value"</span>
+</code></pre></div>
 <h2 id="models-keys-costs">Models, keys, costs</h2>
-<p><code>LEANA_MODEL_NAME</code> supplies the default model when neither the CLI nor the YAML
-configuration selects one. Provider credentials use their own names, such as
-<code>ANTHROPIC_API_KEY</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Process-wide call and cost limits (default: 0, no limit)</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">LEANA_GLOBAL_CALL_LIMIT</span><span class="o">=</span><span class="s2">"100"</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">LEANA_GLOBAL_COST_LIMIT</span><span class="o">=</span><span class="s2">"10.00"</span>
-
-<span class="c1"># Retry attempts for model API calls (default: 10)</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">LEANA_MODEL_RETRY_STOP_AFTER_ATTEMPT</span><span class="o">=</span><span class="s2">"10"</span>
-</code></pre></div>
-<p>To add cost metadata for a model, set <code>model.litellm_model_registry</code> in YAML or:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">LITELLM_MODEL_REGISTRY_PATH</span><span class="o">=</span><span class="s2">"/path/to/model_registry.json"</span>
-</code></pre></div>
-<p>See <a href="../../models/local_models/#cost-tracking">local models</a> for the registry format.
-For models without usable cost information:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">LEANA_COST_TRACKING</span><span class="o">=</span><span class="s2">"ignore_errors"</span>
-</code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Cost tracking</p>
-<p>Ignoring cost errors can leave spending untracked. Cost-based limits cannot
-account for charges the model adapter cannot measure.</p>
+<div class="admonition tip">
+<p class="admonition-title">See also</p>
+<p>Read the <a href="../../quickstart/">quickstart guide</a> first—it already covers most of this.</p>
 </div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Default model name</span>
+<span class="c1"># (default: not set)</span>
+<span class="nv">LEANA_MODEL_NAME</span><span class="o">=</span><span class="s2">"anthropic/claude-sonnet-4-5-20250929"</span>
+</code></pre></div>
+<p>To ignore errors from cost tracking checks (for example for free models), set:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># CAREFUL: This can lead to unmanaged spending!</span>
+<span class="nv">LEANA_COST_TRACKING</span><span class="o">=</span><span class="s2">"ignore_errors"</span>
+</code></pre></div>
+<p>To register extra models to litellm (see <a href="../../models/local_models/">local models</a> for more details), you can either specify the path in the agent file, or set</p>
+<div class="highlight"><pre><span></span><code><span class="nv">LITELLM_MODEL_REGISTRY_PATH</span><span class="o">=</span><span class="s2">"/path/to/your/model/registry.json"</span>
+</code></pre></div>
+<p>Global cost limits:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Global limit on number of model calls (0 = no limit)</span>
+<span class="c1"># (default: 0)</span>
+<span class="nv">LEANA_GLOBAL_CALL_LIMIT</span><span class="o">=</span><span class="s2">"100"</span>
+
+<span class="c1"># Global cost limit in dollars (0 = no limit)</span>
+<span class="c1"># (default: 0)</span>
+<span class="nv">LEANA_GLOBAL_COST_LIMIT</span><span class="o">=</span><span class="s2">"10.00"</span>
+
+<span class="c1"># Number of retry attempts for model API calls</span>
+<span class="c1"># (default: 10)</span>
+<span class="nv">LEANA_MODEL_RETRY_STOP_AFTER_ATTEMPT</span><span class="o">=</span><span class="s2">"10"</span>
+</code></pre></div>
 <h2 id="default-config-files">Default config files</h2>
-<div class="highlight"><pre><span></span><code><span class="c1"># Additional directory for YAML configs selected by name</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">LEANA_CONFIG_DIR</span><span class="o">=</span><span class="s2">"/path/to/configs"</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Set a custom directory for agent config files in addition to the builtin ones</span>
+<span class="c1"># This allows to specify them by names</span>
+<span class="nv">LEANA_CONFIG_DIR</span><span class="o">=</span><span class="s2">"/path/to/your/own/config/dir"</span>
 
-<span class="c1"># Default leani config (default: bundled mini.yaml)</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">LEANA_MINI_CONFIG_PATH</span><span class="o">=</span><span class="s2">"/path/to/agent.yaml"</span>
+<span class="c1"># Config path for leani run script</span>
+<span class="c1"># (default: package_dir / "config" / "mini.yaml")</span>
+<span class="nv">LEANA_MINI_CONFIG_PATH</span><span class="o">=</span><span class="s2">"/path/to/your/own/config"</span>
 
-<span class="c1"># Inspector stylesheet (default: bundled inspector.tcss)</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">LEANA_INSPECTOR_STYLE_PATH</span><span class="o">=</span><span class="s2">"/path/to/inspector.tcss"</span>
+<span class="c1"># Custom style path for trajectory inspector</span>
+<span class="c1"># (default: package_dir / "config" / "inspector.tcss")</span>
+<span class="nv">LEANA_INSPECTOR_STYLE_PATH</span><span class="o">=</span><span class="s2">"/path/to/your/inspector/style.tcss"</span>
 </code></pre></div>
-<h2 id="settings-for-environments">Settings for environments</h2>
-<p>These variables choose the backend executable; the values shown are the defaults:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">LEANA_DOCKER_EXECUTABLE</span><span class="o">=</span><span class="s2">"docker"</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">LEANA_SINGULARITY_EXECUTABLE</span><span class="o">=</span><span class="s2">"singularity"</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">LEANA_BUBBLEWRAP_EXECUTABLE</span><span class="o">=</span><span class="s2">"bwrap"</span>
+<h3 id="settings-for-environments">Settings for environments</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Path/name to the singularity/apptainer executable</span>
+<span class="c1"># (default: "singularity")</span>
+<span class="nv">LEANA_SINGULARITY_EXECUTABLE</span><span class="o">=</span><span class="s2">"singularity"</span>
+
+<span class="c1"># Path/name to the docker executable</span>
+<span class="c1"># (default: "docker")</span>
+<span class="nv">LEANA_DOCKER_EXECUTABLE</span><span class="o">=</span><span class="s2">"docker"</span>
+
+<span class="c1"># Path/name to the bubblewrap executable</span>
+<span class="c1"># (default: "bwrap")</span>
+<span class="nv">LEANA_BUBBLEWRAP_EXECUTABLE</span><span class="o">=</span><span class="s2">"bwrap"</span>
 </code></pre></div>
-<p>See <a href="../environments/">environments</a> for backend selection and requirements.</p>
 <div class="grid cards">
   <a href="https://github.com/cmu-l3/Leanimum-agent/issues/new" class="nav-card-link">
     <div class="nav-card">

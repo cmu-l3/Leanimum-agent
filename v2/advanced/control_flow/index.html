@@ -15,7 +15,7 @@
         
       
       
-      <link rel="icon" href="../../assets/mini_square.svg">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
@@ -61,8 +61,6 @@
       <link rel="stylesheet" href="../../assets/mkdocstrings.css">
     
       <link rel="stylesheet" href="../../assets/image_theme.css">
-    
-      <link rel="stylesheet" href="../../assets/bubbles.css">
     
       <link rel="stylesheet" href="../../assets/navigation_cards.css">
     
@@ -120,23 +118,6 @@
     </div>
     <div data-md-component="announce">
       
-        <aside class="md-banner">
-          <div class="md-banner__inner md-grid md-typeset">
-            
-              <button class="md-banner__button md-icon" aria-label="Don't show this again">
-                
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
-              </button>
-            
-            
-<a href="../../usage/reuf2f/">Leanimum-agent: bash-only Lean workflows and ReuF2F</a>
-
-          </div>
-          
-            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
-          
-        </aside>
-      
     </div>
     
       <div data-md-color-scheme="default" data-md-component="outdated" hidden="">
@@ -152,7 +133,8 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Leanimum-agent documentation" class="md-header__button md-logo" aria-label="Leanimum-agent documentation" data-md-component="logo">
       
-  <img src="../../assets/mini_square.svg" alt="logo">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -354,7 +336,8 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Leanimum-agent documentation" class="md-nav__button md-logo" aria-label="Leanimum-agent documentation" data-md-component="logo">
       
-  <img src="../../assets/mini_square.svg" alt="logo">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
     Leanimum-agent documentation
@@ -2337,24 +2320,24 @@
 <h1 id="agent-control-flow">Agent control flow</h1>
 <div class="admonition note">
 <p class="admonition-title">Understanding AI agent basics</p>
-<p>For an introduction to agent design, see <a href="https://minimal-agent.com">this tutorial</a>.</p>
+<p>We also recently created a long tutorial on understanding the basics of building an AI agent: <a href="https://minimal-agent.com">View it here</a>.</p>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">Understanding the default agent</p>
 <ul>
 <li>This guide shows the control flow of the default agent.</li>
-<li>See the <a href="../cookbook/">cookbook</a> to extend the agent.</li>
+<li>After this, you're ready to <a href="../cookbook/">remix &amp; extend leani</a></li>
 </ul>
 </div>
-<p>The following diagram shows the control flow of the agent:</p>
+<p>The following diagram shows the control flow of the leani agent:</p>
 <pre class="mermaid"><code>flowchart TD
     subgraph run["&lt;b&gt;&lt;code&gt;Agent.run(task)&lt;/code&gt;&lt;/b&gt;"]
         direction TB
         A["&lt;b&gt;&lt;code&gt;Initialize messages&lt;/code&gt;&lt;/b&gt;"] --&gt; B
         B["&lt;b&gt;&lt;code&gt;Agent.step&lt;/code&gt;&lt;/b&gt;"] --&gt; C{"&lt;b&gt;&lt;code&gt;Exception?&lt;/code&gt;&lt;/b&gt;"}
-        C --&gt;|Yes| D["&lt;b&gt;&lt;code&gt;Record exception&lt;/code&gt;&lt;/b&gt;&lt;br/&gt;Unexpected errors are re-raised"]
+        C --&gt;|Yes| D["&lt;b&gt;&lt;code&gt;Agent.add_messages&lt;/code&gt;&lt;/b&gt;&lt;br/&gt;(also re-raises exceptions that don't inherit from InterruptAgentFlow)"]
         C --&gt;|No| E{"&lt;b&gt;&lt;code&gt;messages[-1].role == exit?&lt;/code&gt;&lt;/b&gt;"}
-        D --&gt;|Handled| E
+        D --&gt; E
         E --&gt;|No| B
         E --&gt;|Yes| F["&lt;b&gt;&lt;code&gt;Return result&lt;/code&gt;&lt;/b&gt;"]
     end
@@ -2378,7 +2361,7 @@
     B -.-&gt; step
     S1 -.-&gt; query
     S2 -.-&gt; execute_actions</code></pre>
-<p>The implementation is embedded below so the guide follows the current code:</p>
+<p>And here is the code that implements it:</p>
 <details class="note">
 <summary>Default agent class</summary>
 <ul>
@@ -2577,21 +2560,59 @@
         <span class="k">return</span> <span class="n">data</span>
 </code></pre></div>
 </details>
-<p><code>DefaultAgent.run</code> renders the task and repeatedly calls <code>step</code>, which queries the
-model, executes its actions and appends observations. Model implementations format
-those observations for their own API.</p>
+<p>Essentially, <code>DefaultAgent.run</code> calls <code>DefaultAgent.step</code> in a loop until the agent has finished its task.</p>
+<p>The <code>step</code> method is the core of the agent:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute_actions</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">())</span>
+</code></pre></div>
+<p>It does the following:</p>
+<ol>
+<li>Queries the model for a response based on the current messages (<code>DefaultAgent.query</code>, calling <code>Model.query</code>)</li>
+<li>Executes all actions in the response (<code>DefaultAgent.execute_actions</code>, calling <code>Environment.execute</code> for each action)</li>
+<li>Formats the observation messages via <code>Model.format_observation_messages</code></li>
+<li>Adds the observations to the messages</li>
+</ol>
+<p>Here's <code>query</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">query</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="c1"># ... limit checks ...</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">messages</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add_messages</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">message</span>
+</code></pre></div>
+<p>And <code>execute_actions</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">execute_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">action</span><span class="p">)</span> <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"extra"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"actions"</span><span class="p">,</span> <span class="p">[])]</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_messages</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">format_observation_messages</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">outputs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_template_vars</span><span class="p">()))</span>
+</code></pre></div>
+<p>The interesting bit is how we handle error conditions and the finish condition:
+This uses exceptions that inherit from <code>InterruptAgentFlow</code>. All these exceptions carry messages that get added to the trajectory.</p>
 <ul>
-<li><code>Submitted</code> finishes the task after a zero-exit command emits the completion marker.</li>
-<li><code>LimitsExceeded</code> and <code>TimeExceeded</code> stop work at configured budgets.</li>
-<li><code>FormatError</code> adds corrective feedback; repeated format errors can end the run.</li>
-<li><code>UserInterruption</code> lets the interactive agent add feedback or change modes.</li>
-<li>Command timeouts are returned as environment observations. They are not an
-  agent <code>TimeoutError</code> exception.</li>
+<li>
+<p><code>Submitted</code> is raised when the agent has finished its task. For example, the environment checks if the command output starts with a magic string:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># In Environment.execute</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_check_finished</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"output"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">lstrip</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">(</span><span class="n">keepends</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">lines</span> <span class="ow">and</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT"</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">Submitted</span><span class="p">({</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"exit"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="s2">"extra"</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">}})</span>
+</code></pre></div>
+</li>
+<li>
+<p><code>LimitsExceeded</code> is raised when we hit a cost or step limit</p>
+</li>
+<li><code>FormatError</code> is raised when the output from the LM is not in the expected format</li>
+<li><code>TimeoutError</code> is raised when the action took too long to execute</li>
+<li><code>UserInterruption</code> is raised when the user interrupts the agent</li>
 </ul>
-<p>Unexpected exceptions are recorded and re-raised. The <code>finally</code> path saves the
-trajectory, and an exit message supplies the returned submission/status.</p>
-<p>See <a href="../../usage/python_bindings/">Python bindings</a> for construction and
-<a href="../cookbook/">the cookbook</a> for subclassing.</p>
+<p>The <code>DefaultAgent.run</code> method catches these exceptions and handles them by adding the corresponding messages to the messages list. The loop continues until a message with <code>role="exit"</code> is added.</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+    <span class="k">except</span> <span class="n">InterruptAgentFlow</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_messages</span><span class="p">(</span><span class="o">*</span><span class="n">e</span><span class="o">.</span><span class="n">messages</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">messages</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"role"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"exit"</span><span class="p">:</span>
+        <span class="k">break</span>
+</code></pre></div>
+<p>Using exceptions for the control flow is a lot easier than passing around flags and states, especially when extending or subclassing the agent.</p>
 <div class="grid cards">
   <a href="https://github.com/cmu-l3/Leanimum-agent/issues/new" class="nav-card-link">
     <div class="nav-card">
